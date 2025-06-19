@@ -1398,14 +1398,11 @@
                     
                     <!-- Contrôles sons d'ambiance -->
                     <div class="ambient-controls">
-                        <h4>🌊 Sons d'Induction Hypnotique</h4>
+                        <h4>🌊 Sons d'Induction - Version Essentielle</h4>
                         <div class="ambient-selector">
                             <select id="ambianceSelect" onchange="changeAmbiance()">
                                 <option value="none">Aucun son d'ambiance</option>
                                 <option value="binaural">🧠 Fréquences Binaurales (Thêta 6Hz) - Induction hypnotique profonde</option>
-                                <option value="rain">🌧️ Pluie Douce sur Feuilles - Relaxation et purification</option>
-                                <option value="ocean">🌊 Vagues Océaniques - Respiration naturelle et apaisement</option>
-                                <option value="forest">🌲 Forêt Mystique Nocturne - Connexion à la nature sauvage</option>
                                 <option value="schumann">⚡ Résonance de Schumann (7.83Hz) - Harmonisation terrestre</option>
                                 <option value="whitenoise">🔇 Bruit Blanc Premium - Isolation sonore totale</option>
                             </select>
@@ -1731,195 +1728,6 @@
                 return { source, gain, filter };
             }
 
-            // Générateur de sons de pluie réaliste
-            createRainSound() {
-                const bufferSize = this.audioContext.sampleRate * 3;
-                const buffer = this.audioContext.createBuffer(2, bufferSize, this.audioContext.sampleRate);
-                
-                for (let channel = 0; channel < 2; channel++) {
-                    const output = buffer.getChannelData(channel);
-                    
-                    for (let i = 0; i < bufferSize; i++) {
-                        let sample = 0;
-                        
-                        // Simulation de gouttes individuelles
-                        if (Math.random() < 0.002) {
-                            sample += (Math.random() * 2 - 1) * 0.5;
-                        }
-                        
-                        // Bruit de fond de la pluie
-                        sample += (Math.random() * 2 - 1) * 0.1;
-                        
-                        // Modulation pour simuler l'intensité variable
-                        const intensity = 0.5 + 0.5 * Math.sin(i / bufferSize * Math.PI * 4);
-                        sample *= intensity;
-                        
-                        output[i] = sample;
-                    }
-                }
-
-                const source = this.audioContext.createBufferSource();
-                source.buffer = buffer;
-                source.loop = true;
-                
-                // Filtres pour le réalisme
-                const highpass = this.audioContext.createBiquadFilter();
-                highpass.type = 'highpass';
-                highpass.frequency.value = 200;
-                
-                const lowpass = this.audioContext.createBiquadFilter();
-                lowpass.type = 'lowpass';
-                lowpass.frequency.value = 3000;
-                
-                const gain = this.audioContext.createGain();
-                gain.gain.value = 0.06;
-                
-                source.connect(highpass);
-                highpass.connect(lowpass);
-                lowpass.connect(gain);
-                gain.connect(this.masterGain);
-
-                return { source, gain, highpass, lowpass };
-            }
-
-            // Générateur de sons d'océan amélioré
-            createOceanSound() {
-                const nodes = [];
-                
-                // Vague principale
-                const mainWave = this.audioContext.createOscillator();
-                const mainGain = this.audioContext.createGain();
-                const mainFilter = this.audioContext.createBiquadFilter();
-                
-                mainWave.type = 'sine';
-                mainWave.frequency.setValueAtTime(0.3, this.audioContext.currentTime);
-                mainFilter.type = 'lowpass';
-                mainFilter.frequency.value = 600;
-                mainGain.gain.value = 0.04;
-                
-                // LFO pour modulation naturelle
-                const lfo1 = this.audioContext.createOscillator();
-                const lfoGain1 = this.audioContext.createGain();
-                lfo1.frequency.value = 0.07;
-                lfoGain1.gain.value = 20;
-                
-                lfo1.connect(lfoGain1);
-                lfoGain1.connect(mainWave.frequency);
-                
-                mainWave.connect(mainFilter);
-                mainFilter.connect(mainGain);
-                mainGain.connect(this.masterGain);
-                
-                nodes.push({ oscillator: mainWave, lfo: lfo1, gain: mainGain });
-                
-                // Bruit de ressac
-                const bufferSize = this.audioContext.sampleRate * 2;
-                const buffer = this.audioContext.createBuffer(1, bufferSize, this.audioContext.sampleRate);
-                const output = buffer.getChannelData(0);
-                
-                for (let i = 0; i < bufferSize; i++) {
-                    // Bruit filtré pour simuler l'écume
-                    output[i] = (Math.random() * 2 - 1) * 0.3 * Math.exp(-i / bufferSize * 3);
-                }
-                
-                const noiseSource = this.audioContext.createBufferSource();
-                noiseSource.buffer = buffer;
-                noiseSource.loop = true;
-                
-                const noiseFilter = this.audioContext.createBiquadFilter();
-                noiseFilter.type = 'bandpass';
-                noiseFilter.frequency.value = 1500;
-                noiseFilter.Q.value = 0.5;
-                
-                const noiseGain = this.audioContext.createGain();
-                noiseGain.gain.value = 0.02;
-                
-                noiseSource.connect(noiseFilter);
-                noiseFilter.connect(noiseGain);
-                noiseGain.connect(this.masterGain);
-                
-                nodes.push({ source: noiseSource, gain: noiseGain });
-                
-                return nodes;
-            }
-
-            // Générateur de forêt mystique amélioré
-            createForestSound() {
-                const nodes = [];
-                
-                // Sons d'insectes variés
-                for (let i = 0; i < 4; i++) {
-                    const cricket = this.audioContext.createOscillator();
-                    const cricketGain = this.audioContext.createGain();
-                    const cricketFilter = this.audioContext.createBiquadFilter();
-                    
-                    cricket.frequency.value = 1200 + Math.random() * 800;
-                    cricket.type = 'triangle';
-                    
-                    cricketFilter.type = 'bandpass';
-                    cricketFilter.frequency.value = cricket.frequency.value;
-                    cricketFilter.Q.value = 10;
-                    
-                    cricketGain.gain.value = 0.005 + Math.random() * 0.005;
-                    
-                    // Modulation pour rendre vivant
-                    const cricketLfo = this.audioContext.createOscillator();
-                    const cricketLfoGain = this.audioContext.createGain();
-                    cricketLfo.frequency.value = 2 + Math.random() * 3;
-                    cricketLfoGain.gain.value = 0.3;
-                    
-                    cricketLfo.connect(cricketLfoGain);
-                    cricketLfoGain.connect(cricketGain.gain);
-                    
-                    cricket.connect(cricketFilter);
-                    cricketFilter.connect(cricketGain);
-                    cricketGain.connect(this.masterGain);
-                    
-                    nodes.push({ 
-                        oscillator: cricket, 
-                        lfo: cricketLfo,
-                        gain: cricketGain 
-                    });
-                }
-                
-                // Bruit de vent dans les feuilles
-                const bufferSize = this.audioContext.sampleRate * 4;
-                const buffer = this.audioContext.createBuffer(2, bufferSize, this.audioContext.sampleRate);
-                
-                for (let channel = 0; channel < 2; channel++) {
-                    const output = buffer.getChannelData(channel);
-                    for (let i = 0; i < bufferSize; i++) {
-                        // Bruit de vent filtré
-                        let sample = (Math.random() * 2 - 1) * 0.1;
-                        
-                        // Modulation lente pour simulation du vent
-                        const windMod = Math.sin(i / bufferSize * Math.PI * 2) * 0.5 + 0.5;
-                        sample *= windMod;
-                        
-                        output[i] = sample;
-                    }
-                }
-                
-                const windSource = this.audioContext.createBufferSource();
-                windSource.buffer = buffer;
-                windSource.loop = true;
-                
-                const windFilter = this.audioContext.createBiquadFilter();
-                windFilter.type = 'lowpass';
-                windFilter.frequency.value = 400;
-                
-                const windGain = this.audioContext.createGain();
-                windGain.gain.value = 0.03;
-                
-                windSource.connect(windFilter);
-                windFilter.connect(windGain);
-                windGain.connect(this.masterGain);
-                
-                nodes.push({ source: windSource, gain: windGain });
-                
-                return nodes;
-            }
-
             // Résonance de Schumann (7.83 Hz)
             createSchumannResonance() {
                 const carrier = this.audioContext.createOscillator();
@@ -1958,29 +1766,6 @@
                     case 'whitenoise':
                         this.sources.current = this.createWhiteNoise();
                         this.sources.current.source.start();
-                        break;
-                    
-                    case 'rain':
-                        this.sources.current = this.createRainSound();
-                        this.sources.current.source.start();
-                        break;
-                    
-                    case 'ocean':
-                        this.sources.current = this.createOceanSound();
-                        this.sources.current.forEach(node => {
-                            if (node.oscillator) node.oscillator.start();
-                            if (node.lfo) node.lfo.start();
-                            if (node.source) node.source.start();
-                        });
-                        break;
-                    
-                    case 'forest':
-                        this.sources.current = this.createForestSound();
-                        this.sources.current.forEach(node => {
-                            if (node.oscillator) node.oscillator.start();
-                            if (node.lfo) node.lfo.start();
-                            if (node.source) node.source.start();
-                        });
                         break;
                     
                     case 'schumann':
@@ -2035,11 +1820,8 @@
             const descriptions = {
                 'none': '<p><em>Sélectionnez un son d\'ambiance pour enrichir votre expérience hypnotique</em></p>',
                 'binaural': '<p><strong>Fréquences Binaurales Thêta (6Hz)</strong><br>Ces ondes favorisent l\'état hypnotique profond en synchronisant vos ondes cérébrales avec la fréquence thêta, idéale pour la méditation, la créativité et l\'accès aux souvenirs. <em>Utilisez des écouteurs pour un effet optimal.</em></p>',
-                'rain': '<p><strong>Pluie Douce sur Feuillage</strong><br>Son naturel de purification qui évoque le renouveau et la régénération. Les gouttes d\'eau créent un rythme apaisant qui facilite la relaxation profonde et libère les tensions émotionnelles.</p>',
-                'ocean': '<p><strong>Vagues Océaniques</strong><br>Le rythme hypnotique des vagues reproduit naturellement la respiration profonde. Ce son ancestral reconnecte à l\'élément eau et facilite le lâcher-prise émotionnel.</p>',
-                'forest': '<p><strong>Forêt Mystique Nocturne</strong><br>Ambiance naturelle avec chants d\'insectes et murmure du vent dans les feuilles. Cette symphonie de la nature active votre connexion primordiale et favorise l\'ancrage terrestre.</p>',
-                'schumann': '<p><strong>Résonance de Schumann (7.83Hz)</strong><br>Fréquence électromagnétique naturelle de la Terre, appelée "battement de cœur de Gaïa". Cette vibration harmonise votre champ bioélectrique avec celui de la planète.</p>',
-                'whitenoise': '<p><strong>Bruit Blanc Premium</strong><br>Masque acoustique parfait qui isole des bruits extérieurs et crée une bulle de silence relatif. Favorise la concentration pure sur la voix hypnotique.</p>'
+                'schumann': '<p><strong>Résonance de Schumann (7.83Hz)</strong><br>Fréquence électromagnétique naturelle de la Terre, appelée "battement de cœur de Gaïa". Cette vibration harmonise votre champ bioélectrique avec celui de la planète pour un ancrage profond.</p>',
+                'whitenoise': '<p><strong>Bruit Blanc Premium</strong><br>Masque acoustique parfait qui isole des bruits extérieurs et crée une bulle de silence relatif. Favorise la concentration pure sur la voix hypnotique et l\'état de transe.</p>'
             };
             
             // Mettre à jour la description
@@ -2060,11 +1842,8 @@
                 
                 const ambianceNames = {
                     'binaural': '🧠 Fréquences Binaurales actives - Induction thêta 6Hz',
-                    'rain': '🌧️ Pluie douce - Purification et renouveau',
-                    'ocean': '🌊 Vagues océaniques - Respiration naturelle',
-                    'forest': '🌲 Forêt mystique - Connexion terrestre',
                     'schumann': '⚡ Résonance Schumann - Harmonisation planétaire',
-                    'whitenoise': '🔇 Bruit blanc - Isolation acoustique premium'
+                    'whitenoise': '🔇 Bruit blanc premium - Isolation acoustique totale'
                 };
                 
                 status.innerHTML = `<span>${ambianceNames[selectedValue]}</span>`;
