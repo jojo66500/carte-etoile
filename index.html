@@ -635,7 +635,7 @@
             color: rgba(255, 255, 255, 0.9);
         }
 
-        /* Audio player AMÉLIORÉ avec système anti-interruption */
+        /* Audio player AMÉLIORÉ avec sons d'ambiance */
         .audio-section {
             background: linear-gradient(135deg, rgba(139, 92, 246, 0.1), rgba(245, 158, 11, 0.1));
             border: 1px solid var(--glass-border);
@@ -650,7 +650,7 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 20px;
+            gap: 25px;
             margin: 24px 0;
         }
 
@@ -664,6 +664,132 @@
             height: 60px;
             border-radius: 30px;
             filter: drop-shadow(0 10px 20px rgba(0,0,0,0.3));
+        }
+
+        /* Contrôles sons d'ambiance */
+        .ambient-controls {
+            background: var(--glass-bg);
+            backdrop-filter: blur(15px);
+            border: 1px solid var(--glass-border);
+            border-radius: 16px;
+            padding: 24px;
+            width: 100%;
+            max-width: 500px;
+            margin: 20px 0;
+        }
+
+        .ambient-controls h4 {
+            color: var(--light-gold);
+            margin-bottom: 16px;
+            font-family: 'Playfair Display', serif;
+            font-size: 1.2rem;
+        }
+
+        .ambient-selector {
+            margin-bottom: 20px;
+        }
+
+        .ambient-selector select {
+            width: 100%;
+            padding: 12px 16px;
+            background: rgba(255,255,255,0.1);
+            border: 2px solid var(--glass-border);
+            border-radius: 12px;
+            color: var(--white);
+            font-size: 0.95rem;
+            font-family: inherit;
+            outline: none;
+            transition: all 0.3s ease;
+        }
+
+        .ambient-selector select:focus {
+            border-color: var(--gold);
+            background: rgba(255,255,255,0.15);
+        }
+
+        .ambient-selector option {
+            background: var(--deep-purple);
+            color: var(--white);
+            padding: 8px;
+        }
+
+        .volume-controls {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 16px;
+            margin: 20px 0;
+        }
+
+        .volume-control {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 0.9rem;
+        }
+
+        .volume-control label {
+            min-width: 140px;
+            color: var(--off-white);
+            font-weight: 500;
+        }
+
+        .volume-control input[type="range"] {
+            flex: 1;
+            height: 6px;
+            background: rgba(255,255,255,0.2);
+            border-radius: 3px;
+            outline: none;
+            transition: all 0.3s ease;
+        }
+
+        .volume-control input[type="range"]::-webkit-slider-thumb {
+            appearance: none;
+            width: 18px;
+            height: 18px;
+            background: linear-gradient(45deg, var(--gold), var(--light-gold));
+            border-radius: 50%;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .volume-control input[type="range"]::-webkit-slider-thumb:hover {
+            transform: scale(1.2);
+            box-shadow: 0 0 10px rgba(245, 158, 11, 0.5);
+        }
+
+        .volume-control input[type="range"]::-moz-range-thumb {
+            width: 18px;
+            height: 18px;
+            background: linear-gradient(45deg, var(--gold), var(--light-gold));
+            border-radius: 50%;
+            cursor: pointer;
+            border: none;
+        }
+
+        .volume-control span {
+            min-width: 40px;
+            color: var(--gold);
+            font-weight: 600;
+            text-align: right;
+        }
+
+        .ambient-status {
+            background: rgba(0,0,0,0.2);
+            padding: 12px 16px;
+            border-radius: 8px;
+            border-left: 3px solid var(--gold);
+            font-size: 0.85rem;
+            color: var(--off-white);
+            text-align: left;
+        }
+
+        .ambient-status.active {
+            border-left-color: #10b981;
+            background: rgba(16, 185, 129, 0.1);
+        }
+
+        .ambient-status.active span {
+            color: #10b981;
         }
 
         .audio-status {
@@ -1250,6 +1376,39 @@
                         </audio>
                     </div>
                     
+                    <!-- Contrôles sons d'ambiance -->
+                    <div class="ambient-controls">
+                        <h4>🌊 Sons d'Induction Hypnotique</h4>
+                        <div class="ambient-selector">
+                            <select id="ambianceSelect" onchange="changeAmbiance()">
+                                <option value="none">Aucun son d'ambiance</option>
+                                <option value="binaural">🧠 Fréquences Binaurales (Thêta 6Hz)</option>
+                                <option value="rain">🌧️ Pluie Douce sur Feuilles</option>
+                                <option value="ocean">🌊 Vagues Océaniques</option>
+                                <option value="forest">🌲 Forêt Mystique Nocturne</option>
+                                <option value="schumann">⚡ Résonance de Schumann (7.83Hz)</option>
+                                <option value="whitenoise">🔇 Bruit Blanc Apaisant</option>
+                            </select>
+                        </div>
+                        
+                        <div class="volume-controls">
+                            <div class="volume-control">
+                                <label>🎙️ Volume Hypnose:</label>
+                                <input type="range" id="hypnosisVolume" min="0" max="100" value="80" onchange="updateVolumes()">
+                                <span id="hypnosisVolumeText">80%</span>
+                            </div>
+                            <div class="volume-control">
+                                <label>🌊 Volume Ambiance:</label>
+                                <input type="range" id="ambianceVolume" min="0" max="100" value="30" onchange="updateVolumes()">
+                                <span id="ambianceVolumeText">30%</span>
+                            </div>
+                        </div>
+                        
+                        <div class="ambient-status" id="ambientStatus">
+                            <span>🔇 Aucune ambiance sélectionnée</span>
+                        </div>
+                    </div>
+                    
                     <div class="audio-status">
                         <div class="status-indicator" id="statusIndicator"></div>
                         <span id="statusText">Prêt pour l'écoute</span>
@@ -1458,8 +1617,319 @@
         let audioElement = null;
         let isAudioActive = false;
         let isActivated = false;
+        let ambianceAudio = null;
+        let audioContext = null;
+        let ambianceNodes = {};
 
-        // Codes d'activation valides (en production, vous pourriez les charger depuis un serveur)
+        // Générateur de sons d'ambiance
+        class AmbianceGenerator {
+            constructor() {
+                this.audioContext = null;
+                this.masterGain = null;
+                this.sources = {};
+            }
+
+            async init() {
+                if (!this.audioContext) {
+                    this.audioContext = new (window.AudioContext || window.webkitAudioContext)();
+                    this.masterGain = this.audioContext.createGain();
+                    this.masterGain.connect(this.audioContext.destination);
+                    this.masterGain.gain.value = 0.3; // Volume par défaut 30%
+                }
+                
+                if (this.audioContext.state === 'suspended') {
+                    await this.audioContext.resume();
+                }
+            }
+
+            // Générateur de fréquences binaurales
+            createBinauralBeats(frequency = 6) {
+                const oscillator1 = this.audioContext.createOscillator();
+                const oscillator2 = this.audioContext.createOscillator();
+                const gain1 = this.audioContext.createGain();
+                const gain2 = this.audioContext.createGain();
+                const merger = this.audioContext.createChannelMerger(2);
+
+                oscillator1.frequency.setValueAtTime(200, this.audioContext.currentTime);
+                oscillator2.frequency.setValueAtTime(200 + frequency, this.audioContext.currentTime);
+                
+                oscillator1.type = 'sine';
+                oscillator2.type = 'sine';
+                
+                gain1.gain.value = 0.1;
+                gain2.gain.value = 0.1;
+
+                oscillator1.connect(gain1);
+                oscillator2.connect(gain2);
+                gain1.connect(merger, 0, 0);
+                gain2.connect(merger, 0, 1);
+                merger.connect(this.masterGain);
+
+                return { oscillator1, oscillator2, gain1, gain2 };
+            }
+
+            // Générateur de bruit blanc
+            createWhiteNoise() {
+                const bufferSize = 4096;
+                const buffer = this.audioContext.createBuffer(1, bufferSize, this.audioContext.sampleRate);
+                const output = buffer.getChannelData(0);
+                
+                for (let i = 0; i < bufferSize; i++) {
+                    output[i] = Math.random() * 2 - 1;
+                }
+
+                const source = this.audioContext.createBufferSource();
+                source.buffer = buffer;
+                source.loop = true;
+                
+                const gain = this.audioContext.createGain();
+                gain.gain.value = 0.05;
+                
+                source.connect(gain);
+                gain.connect(this.masterGain);
+
+                return { source, gain };
+            }
+
+            // Générateur de sons de pluie
+            createRainSound() {
+                const bufferSize = this.audioContext.sampleRate * 2;
+                const buffer = this.audioContext.createBuffer(1, bufferSize, this.audioContext.sampleRate);
+                const output = buffer.getChannelData(0);
+                
+                for (let i = 0; i < bufferSize; i++) {
+                    // Simulation pluie avec bruit filtré
+                    output[i] = (Math.random() * 2 - 1) * Math.exp(-i / bufferSize * 5);
+                }
+
+                const source = this.audioContext.createBufferSource();
+                source.buffer = buffer;
+                source.loop = true;
+                
+                const filter = this.audioContext.createBiquadFilter();
+                filter.type = 'lowpass';
+                filter.frequency.value = 2000;
+                
+                const gain = this.audioContext.createGain();
+                gain.gain.value = 0.08;
+                
+                source.connect(filter);
+                filter.connect(gain);
+                gain.connect(this.masterGain);
+
+                return { source, gain, filter };
+            }
+
+            // Générateur de sons d'océan
+            createOceanSound() {
+                const oscillator = this.audioContext.createOscillator();
+                const gain = this.audioContext.createGain();
+                const filter = this.audioContext.createBiquadFilter();
+                
+                oscillator.type = 'sine';
+                oscillator.frequency.setValueAtTime(0.5, this.audioContext.currentTime);
+                
+                filter.type = 'lowpass';
+                filter.frequency.value = 800;
+                
+                gain.gain.value = 0.06;
+                
+                // Modulation pour simuler les vagues
+                const lfo = this.audioContext.createOscillator();
+                const lfoGain = this.audioContext.createGain();
+                lfo.frequency.value = 0.1;
+                lfoGain.gain.value = 30;
+                
+                lfo.connect(lfoGain);
+                lfoGain.connect(oscillator.frequency);
+                
+                oscillator.connect(filter);
+                filter.connect(gain);
+                gain.connect(this.masterGain);
+
+                return { oscillator, gain, filter, lfo };
+            }
+
+            // Générateur de forêt mystique
+            createForestSound() {
+                const nodes = [];
+                
+                // Sons d'insectes
+                for (let i = 0; i < 3; i++) {
+                    const oscillator = this.audioContext.createOscillator();
+                    const gain = this.audioContext.createGain();
+                    
+                    oscillator.frequency.value = 800 + Math.random() * 1200;
+                    oscillator.type = 'triangle';
+                    gain.gain.value = 0.01;
+                    
+                    oscillator.connect(gain);
+                    gain.connect(this.masterGain);
+                    
+                    nodes.push({ oscillator, gain });
+                }
+                
+                return nodes;
+            }
+
+            // Résonance de Schumann (7.83 Hz)
+            createSchumannResonance() {
+                const carrier = this.audioContext.createOscillator();
+                const modulator = this.audioContext.createOscillator();
+                const gain = this.audioContext.createGain();
+                const modulatorGain = this.audioContext.createGain();
+                
+                carrier.frequency.value = 110; // Note base
+                modulator.frequency.value = 7.83; // Fréquence Schumann
+                
+                carrier.type = 'sine';
+                modulator.type = 'sine';
+                
+                modulatorGain.gain.value = 50;
+                gain.gain.value = 0.04;
+                
+                modulator.connect(modulatorGain);
+                modulatorGain.connect(carrier.frequency);
+                carrier.connect(gain);
+                gain.connect(this.masterGain);
+
+                return { carrier, modulator, gain };
+            }
+
+            async startAmbiance(type) {
+                await this.init();
+                this.stopAmbiance();
+
+                switch (type) {
+                    case 'binaural':
+                        this.sources.current = this.createBinauralBeats(6);
+                        this.sources.current.oscillator1.start();
+                        this.sources.current.oscillator2.start();
+                        break;
+                    
+                    case 'whitenoise':
+                        this.sources.current = this.createWhiteNoise();
+                        this.sources.current.source.start();
+                        break;
+                    
+                    case 'rain':
+                        this.sources.current = this.createRainSound();
+                        this.sources.current.source.start();
+                        break;
+                    
+                    case 'ocean':
+                        this.sources.current = this.createOceanSound();
+                        this.sources.current.oscillator.start();
+                        this.sources.current.lfo.start();
+                        break;
+                    
+                    case 'forest':
+                        this.sources.current = this.createForestSound();
+                        this.sources.current.forEach(node => node.oscillator.start());
+                        break;
+                    
+                    case 'schumann':
+                        this.sources.current = this.createSchumannResonance();
+                        this.sources.current.carrier.start();
+                        this.sources.current.modulator.start();
+                        break;
+                }
+            }
+
+            stopAmbiance() {
+                if (this.sources.current) {
+                    try {
+                        if (Array.isArray(this.sources.current)) {
+                            this.sources.current.forEach(node => {
+                                if (node.oscillator) node.oscillator.stop();
+                            });
+                        } else {
+                            if (this.sources.current.oscillator) this.sources.current.oscillator.stop();
+                            if (this.sources.current.oscillator1) this.sources.current.oscillator1.stop();
+                            if (this.sources.current.oscillator2) this.sources.current.oscillator2.stop();
+                            if (this.sources.current.source) this.sources.current.source.stop();
+                            if (this.sources.current.carrier) this.sources.current.carrier.stop();
+                            if (this.sources.current.modulator) this.sources.current.modulator.stop();
+                            if (this.sources.current.lfo) this.sources.current.lfo.stop();
+                        }
+                    } catch (e) {
+                        console.log('Audio node already stopped');
+                    }
+                    this.sources.current = null;
+                }
+            }
+
+            setVolume(volume) {
+                if (this.masterGain) {
+                    this.masterGain.gain.value = volume / 100;
+                }
+            }
+        }
+
+        // Instance globale du générateur d'ambiance
+        let ambianceGenerator = new AmbianceGenerator();
+
+        // Contrôle des sons d'ambiance
+        async function changeAmbiance() {
+            const select = document.getElementById('ambianceSelect');
+            const status = document.getElementById('ambientStatus');
+            const selectedValue = select.value;
+            
+            if (selectedValue === 'none') {
+                ambianceGenerator.stopAmbiance();
+                status.innerHTML = '<span>🔇 Aucune ambiance sélectionnée</span>';
+                status.classList.remove('active');
+                trackInteraction('Ambiance: Disabled');
+                return;
+            }
+            
+            try {
+                await ambianceGenerator.startAmbiance(selectedValue);
+                
+                const ambianceNames = {
+                    'binaural': '🧠 Fréquences Binaurales actives - Induction thêta',
+                    'rain': '🌧️ Pluie douce - Relaxation profonde',
+                    'ocean': '🌊 Vagues océaniques - Respiration naturelle',
+                    'forest': '🌲 Forêt mystique - Connexion à la nature',
+                    'schumann': '⚡ Résonance Schumann - Harmonisation terrestre',
+                    'whitenoise': '🔇 Bruit blanc - Isolation sonore'
+                };
+                
+                status.innerHTML = `<span>${ambianceNames[selectedValue]}</span>`;
+                status.classList.add('active');
+                trackInteraction('Ambiance: ' + selectedValue);
+                
+                console.log('Ambiance démarrée:', selectedValue);
+                
+            } catch (error) {
+                console.error('Erreur ambiance:', error);
+                status.innerHTML = '<span>❌ Erreur lors du démarrage de l\'ambiance</span>';
+                status.classList.remove('active');
+            }
+        }
+
+        // Contrôle des volumes
+        function updateVolumes() {
+            const hypnosisVolume = document.getElementById('hypnosisVolume').value;
+            const ambianceVolume = document.getElementById('ambianceVolume').value;
+            
+            // Volume de l'audio principal
+            if (audioElement) {
+                audioElement.volume = hypnosisVolume / 100;
+            }
+            
+            // Volume de l'ambiance
+            if (ambianceGenerator) {
+                ambianceGenerator.setVolume(ambianceVolume);
+            }
+            
+            // Mise à jour de l'affichage
+            document.getElementById('hypnosisVolumeText').textContent = hypnosisVolume + '%';
+            document.getElementById('ambianceVolumeText').textContent = ambianceVolume + '%';
+            
+            // Tracking
+            trackInteraction('Volume: Hypnosis=' + hypnosisVolume + '% Ambiance=' + ambianceVolume + '%');
+        }
         const validCodes = [
             'ETOILE-2025', 'XK7M-9P2W', 'Q3W8-R5T1', 'M8N3-B7V2', 'Z9X4-C8Q5',
             'A1B2-C3D4', 'E5F6-G7H8', 'I9J0-K1L2', 'M3N4-O5P6', 'Q7R8-S9T0',
