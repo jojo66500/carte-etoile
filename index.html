@@ -8,6 +8,9 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
     <meta name="description" content="L'Étoile - Arcane XVII. Expérience immersive de tarot avec technologie NFC. Hypnose, guidance spirituelle et sagesse ancestrale.">
+    <link rel="icon" type="image/x-icon" href="assets/logos/favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/logos/hypnotarot-32x32.png">
+    <link rel="icon" type="image/png" sizes="64x64" href="assets/logos/hypnotarot-64x64.png">
     <style>
         :root {
             --primary-purple: #6366f1;
@@ -22,6 +25,69 @@
             --glass-border: rgba(255, 255, 255, 0.2);
             --shadow-lg: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
             --shadow-xl: 0 35px 60px -12px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Logo Hypnotarot Styles */
+        .logo-hypnotarot {
+            height: 40px;
+            width: auto;
+            transition: all 0.3s ease;
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));
+        }
+
+        .logo-hypnotarot:hover {
+            transform: scale(1.05);
+            filter: drop-shadow(0 4px 8px rgba(245, 158, 11, 0.3));
+        }
+
+        .logo-hypnotarot-compact {
+            height: 30px;
+            width: auto;
+            margin-bottom: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .logo-hypnotarot-header {
+            height: 45px;
+            width: auto;
+            margin-right: 15px;
+            transition: all 0.3s ease;
+        }
+
+        .logo-hypnotarot-intro {
+            height: 60px;
+            width: auto;
+            margin-bottom: 30px;
+            transition: all 0.3s ease;
+            filter: drop-shadow(0 4px 8px rgba(245, 158, 11, 0.3));
+        }
+
+        .logo-hypnotarot-activation {
+            height: 50px;
+            width: auto;
+            margin-bottom: 20px;
+            transition: all 0.3s ease;
+        }
+
+        @media (max-width: 768px) {
+            .logo-hypnotarot-header {
+                height: 35px;
+                margin-right: 10px;
+            }
+            .logo-hypnotarot {
+                height: 30px;
+            }
+            .logo-hypnotarot-compact {
+                height: 25px;
+            }
+            .logo-hypnotarot-intro {
+                height: 45px;
+                margin-bottom: 20px;
+            }
+            .logo-hypnotarot-activation {
+                height: 40px;
+                margin-bottom: 15px;
+            }
         }
 
         * {
@@ -1160,6 +1226,7 @@
     <!-- Page d'activation -->
     <div class="activation-screen" id="activationScreen">
         <div class="activation-container">
+            <img src="assets/logos/hypnotarot-logo.png" alt="Hypnotarot" class="logo-hypnotarot-activation">
             <h1 class="activation-title">⭐ L'ÉTOILE ⭐</h1>
             <p class="activation-subtitle">Activez votre carte pour révéler votre destinée</p>
             
@@ -1190,6 +1257,7 @@
     
     <!-- Page d'accueil avec animation -->
     <div class="intro-screen" id="introScreen">
+        <img src="assets/logos/hypnotarot-logo.png" alt="Hypnotarot" class="logo-hypnotarot-intro">
         <h1 class="intro-title">⭐ L'ÉTOILE ⭐</h1>
         <div class="intro-video-container">
             <video autoplay muted loop playsinline poster="assets/etoile-cover.jpg" id="introVideo">
@@ -1213,6 +1281,7 @@
             <p class="subtitle">Arcane Majeur XVII</p>
             <p class="tagline">Symbole d'Espérance & Harmonie Céleste</p>
             <div class="patent-badge">
+                <img src="assets/logos/hypnotarot-logo.png" alt="Hypnotarot Logo" class="logo-hypnotarot-header">
                 🛡️ Innovation Brevetée FR2503190
             </div>
         </header>
@@ -1624,6 +1693,7 @@
         <!-- Footer moderne -->
         <footer class="scroll-reveal">
             <div class="footer-content">
+                <img src="assets/logos/hypnotarot-compact.png" alt="Hypnotarot" class="logo-hypnotarot-compact">
                 <div class="footer-logo">Tarot NFC Innovation</div>
                 <p class="footer-text">L'Étoile vous guide vers l'harmonie cosmique et l'éveil spirituel</p>
                 <p class="footer-text">Expérience mystique authentique • Technologie NFC révolutionnaire</p>
@@ -2290,7 +2360,9 @@
             const assetsToPreload = [
                 'assets/etoile-animation.mp4',
                 'assets/etoile-hypnose.mp3',
-                'assets/etoile-cover.jpg'
+                'assets/etoile-cover.jpg',
+                'assets/logos/hypnotarot-logo.png',
+                'assets/logos/hypnotarot-compact.png'
             ];
             
             assetsToPreload.forEach(asset => {
@@ -2304,7 +2376,7 @@
                 } else if (asset.includes('.mp3')) {
                     link.as = 'audio';
                     link.type = 'audio/mpeg';
-                } else if (asset.includes('.jpg')) {
+                } else if (asset.includes('.jpg') || asset.includes('.png')) {
                     link.as = 'image';
                 }
                 
@@ -2393,6 +2465,7 @@
             console.log('🌟 L\'Étoile - Arcane XVII - Site NFC initialisé avec succès');
             console.log('💫 Innovation brevetée FR2503190');
             console.log('✨ Système d\'activation sécurisé activé');
+            console.log('🎨 Logo Hypnotarot intégré');
             
             // Tracking du chargement initial
             trackInteraction('Page: L\'Étoile Loaded', {
