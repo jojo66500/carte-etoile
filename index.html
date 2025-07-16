@@ -27,10 +27,11 @@
             --shadow-xl: 0 35px 60px -12px rgba(0, 0, 0, 0.3);
         }
 
-        /* Logo Hypnotarot Styles */
+        /* Logo Hypnotarot Styles - Optimisé pour 698x169 */
         .logo-hypnotarot {
-            height: 40px;
+            height: 60px;
             width: auto;
+            max-width: 280px;
             transition: all 0.3s ease;
             filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));
         }
@@ -41,51 +42,86 @@
         }
 
         .logo-hypnotarot-compact {
-            height: 30px;
+            height: 45px;
             width: auto;
-            margin-bottom: 10px;
+            max-width: 200px;
+            margin-bottom: 15px;
             transition: all 0.3s ease;
         }
 
         .logo-hypnotarot-header {
-            height: 45px;
+            height: 80px;
             width: auto;
-            margin-right: 15px;
+            max-width: 320px;
+            margin-right: 20px;
             transition: all 0.3s ease;
         }
 
         .logo-hypnotarot-intro {
-            height: 60px;
+            height: 100px;
             width: auto;
-            margin-bottom: 30px;
+            max-width: 400px;
+            margin-bottom: 40px;
             transition: all 0.3s ease;
             filter: drop-shadow(0 4px 8px rgba(245, 158, 11, 0.3));
         }
 
         .logo-hypnotarot-activation {
-            height: 50px;
+            height: 80px;
             width: auto;
-            margin-bottom: 20px;
+            max-width: 350px;
+            margin-bottom: 30px;
             transition: all 0.3s ease;
         }
 
         @media (max-width: 768px) {
             .logo-hypnotarot-header {
+                height: 60px;
+                max-width: 240px;
+                margin-right: 15px;
+            }
+            .logo-hypnotarot {
+                height: 45px;
+                max-width: 200px;
+            }
+            .logo-hypnotarot-compact {
                 height: 35px;
+                max-width: 150px;
+            }
+            .logo-hypnotarot-intro {
+                height: 70px;
+                max-width: 280px;
+                margin-bottom: 25px;
+            }
+            .logo-hypnotarot-activation {
+                height: 60px;
+                max-width: 240px;
+                margin-bottom: 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .logo-hypnotarot-header {
+                height: 45px;
+                max-width: 180px;
                 margin-right: 10px;
             }
             .logo-hypnotarot {
-                height: 30px;
+                height: 35px;
+                max-width: 150px;
             }
             .logo-hypnotarot-compact {
-                height: 25px;
+                height: 30px;
+                max-width: 120px;
             }
             .logo-hypnotarot-intro {
-                height: 45px;
+                height: 55px;
+                max-width: 220px;
                 margin-bottom: 20px;
             }
             .logo-hypnotarot-activation {
-                height: 40px;
+                height: 50px;
+                max-width: 200px;
                 margin-bottom: 15px;
             }
         }
@@ -2362,7 +2398,8 @@
                 'assets/etoile-hypnose.mp3',
                 'assets/etoile-cover.jpg',
                 'assets/logos/hypnotarot-logo.png',
-                'assets/logos/hypnotarot-compact.png'
+                'assets/logos/hypnotarot-compact.png',
+                'assets/logos/favicon.ico'
             ];
             
             assetsToPreload.forEach(asset => {
@@ -2376,7 +2413,7 @@
                 } else if (asset.includes('.mp3')) {
                     link.as = 'audio';
                     link.type = 'audio/mpeg';
-                } else if (asset.includes('.jpg') || asset.includes('.png')) {
+                } else if (asset.includes('.jpg') || asset.includes('.png') || asset.includes('.ico')) {
                     link.as = 'image';
                 }
                 
