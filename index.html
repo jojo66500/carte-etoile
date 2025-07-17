@@ -5,12 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>L'Étoile XVII • Tarot NFC • Innovation Brevetée</title>
     <meta name="robots" content="noindex, nofollow, noarchive, nosnippet">
+    <link rel="icon" type="image/png" href="favicon.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
     <meta name="description" content="L'Étoile - Arcane XVII. Expérience immersive de tarot avec technologie NFC. Hypnose, guidance spirituelle et sagesse ancestrale.">
-    <link rel="icon" type="image/x-icon" href="assets/logos/favicon.ico">
-    <link rel="icon" type="image/png" sizes="32x32" href="assets/logos/hypnotarot-32x32.png">
-    <link rel="icon" type="image/png" sizes="64x64" href="assets/logos/hypnotarot-64x64.png">
     <style>
         :root {
             --primary-purple: #6366f1;
@@ -25,105 +23,6 @@
             --glass-border: rgba(255, 255, 255, 0.2);
             --shadow-lg: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
             --shadow-xl: 0 35px 60px -12px rgba(0, 0, 0, 0.3);
-        }
-
-        /* Logo Hypnotarot Styles - Optimisé pour 698x169 */
-        .logo-hypnotarot {
-            height: 60px;
-            width: auto;
-            max-width: 280px;
-            transition: all 0.3s ease;
-            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));
-        }
-
-        .logo-hypnotarot:hover {
-            transform: scale(1.05);
-            filter: drop-shadow(0 4px 8px rgba(245, 158, 11, 0.3));
-        }
-
-        .logo-hypnotarot-compact {
-            height: 45px;
-            width: auto;
-            max-width: 200px;
-            margin-bottom: 15px;
-            transition: all 0.3s ease;
-        }
-
-        .logo-hypnotarot-header {
-            height: 80px;
-            width: auto;
-            max-width: 320px;
-            margin-right: 20px;
-            transition: all 0.3s ease;
-        }
-
-        .logo-hypnotarot-intro {
-            height: 100px;
-            width: auto;
-            max-width: 400px;
-            margin-bottom: 40px;
-            transition: all 0.3s ease;
-            filter: drop-shadow(0 4px 8px rgba(245, 158, 11, 0.3));
-        }
-
-        .logo-hypnotarot-activation {
-            height: 80px;
-            width: auto;
-            max-width: 350px;
-            margin-bottom: 30px;
-            transition: all 0.3s ease;
-        }
-
-        @media (max-width: 768px) {
-            .logo-hypnotarot-header {
-                height: 60px;
-                max-width: 240px;
-                margin-right: 15px;
-            }
-            .logo-hypnotarot {
-                height: 45px;
-                max-width: 200px;
-            }
-            .logo-hypnotarot-compact {
-                height: 35px;
-                max-width: 150px;
-            }
-            .logo-hypnotarot-intro {
-                height: 70px;
-                max-width: 280px;
-                margin-bottom: 25px;
-            }
-            .logo-hypnotarot-activation {
-                height: 60px;
-                max-width: 240px;
-                margin-bottom: 20px;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .logo-hypnotarot-header {
-                height: 45px;
-                max-width: 180px;
-                margin-right: 10px;
-            }
-            .logo-hypnotarot {
-                height: 35px;
-                max-width: 150px;
-            }
-            .logo-hypnotarot-compact {
-                height: 30px;
-                max-width: 120px;
-            }
-            .logo-hypnotarot-intro {
-                height: 55px;
-                max-width: 220px;
-                margin-bottom: 20px;
-            }
-            .logo-hypnotarot-activation {
-                height: 50px;
-                max-width: 200px;
-                margin-bottom: 15px;
-            }
         }
 
         * {
@@ -857,17 +756,20 @@
 
         .volume-control input[type="range"] {
             flex: 1;
-            height: 6px;
+            height: 8px;
             background: rgba(255,255,255,0.2);
-            border-radius: 3px;
+            border-radius: 4px;
             outline: none;
             transition: all 0.3s ease;
+            -webkit-appearance: none;
+            appearance: none;
         }
 
         .volume-control input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
             appearance: none;
-            width: 18px;
-            height: 18px;
+            width: 20px;
+            height: 20px;
             background: linear-gradient(45deg, var(--gold), var(--light-gold));
             border-radius: 50%;
             cursor: pointer;
@@ -880,8 +782,8 @@
         }
 
         .volume-control input[type="range"]::-moz-range-thumb {
-            width: 18px;
-            height: 18px;
+            width: 20px;
+            height: 20px;
             background: linear-gradient(45deg, var(--gold), var(--light-gold));
             border-radius: 50%;
             cursor: pointer;
@@ -889,7 +791,7 @@
         }
 
         .volume-control span {
-            min-width: 40px;
+            min-width: 50px;
             color: var(--gold);
             font-weight: 600;
             text-align: right;
@@ -1156,6 +1058,31 @@
                 padding: 32px 24px;
                 margin: 20px;
             }
+
+            .volume-control {
+                flex-direction: column;
+                gap: 8px;
+                align-items: flex-start;
+            }
+
+            .volume-control label {
+                min-width: auto;
+                font-size: 0.85rem;
+            }
+
+            .volume-control input[type="range"] {
+                width: 100%;
+                height: 10px;
+            }
+
+            .volume-control input[type="range"]::-webkit-slider-thumb {
+                width: 24px;
+                height: 24px;
+            }
+
+            .volume-control span {
+                font-size: 0.9rem;
+            }
         }
 
         @media (max-width: 480px) {
@@ -1191,6 +1118,15 @@
             .code-input {
                 font-size: 1rem;
                 padding: 16px 20px;
+            }
+
+            .volume-control input[type="range"] {
+                height: 12px;
+            }
+
+            .volume-control input[type="range"]::-webkit-slider-thumb {
+                width: 26px;
+                height: 26px;
             }
         }
 
@@ -1262,7 +1198,6 @@
     <!-- Page d'activation -->
     <div class="activation-screen" id="activationScreen">
         <div class="activation-container">
-            <img src="assets/logos/hypnotarot-logo.png" alt="Hypnotarot" class="logo-hypnotarot-activation">
             <h1 class="activation-title">⭐ L'ÉTOILE ⭐</h1>
             <p class="activation-subtitle">Activez votre carte pour révéler votre destinée</p>
             
@@ -1293,7 +1228,6 @@
     
     <!-- Page d'accueil avec animation -->
     <div class="intro-screen" id="introScreen">
-        <img src="assets/logos/hypnotarot-logo.png" alt="Hypnotarot" class="logo-hypnotarot-intro">
         <h1 class="intro-title">⭐ L'ÉTOILE ⭐</h1>
         <div class="intro-video-container">
             <video autoplay muted loop playsinline poster="assets/etoile-cover.jpg" id="introVideo">
@@ -1317,7 +1251,6 @@
             <p class="subtitle">Arcane Majeur XVII</p>
             <p class="tagline">Symbole d'Espérance & Harmonie Céleste</p>
             <div class="patent-badge">
-                <img src="assets/logos/hypnotarot-logo.png" alt="Hypnotarot Logo" class="logo-hypnotarot-header">
                 🛡️ Innovation Brevetée FR2503190
             </div>
         </header>
@@ -1411,7 +1344,7 @@
             <h4>En Tirage Personnel :</h4>
             <ul>
                 <li><strong>Méditation nocturne :</strong> Contemplez l'étoile pour vous connecter à l'espoir et aux possibilités nouvelles</li>
-                <li><strong>Ritual de purification :</strong> Utilisez cette carte pour nettoyer votre aura des énergies négatives</li>
+                <li><strong>Rituel de purification :</strong> Utilisez cette carte pour nettoyer votre aura des énergies négatives</li>
                 <li><strong>Activation de l'intuition :</strong> Placez la carte sur votre troisième œil pendant la méditation</li>
                 <li><strong>Guidance féminine :</strong> Connectez-vous à votre essence féminine divine, quel que soit votre genre</li>
             </ul>
@@ -1729,7 +1662,6 @@
         <!-- Footer moderne -->
         <footer class="scroll-reveal">
             <div class="footer-content">
-                <img src="assets/logos/hypnotarot-compact.png" alt="Hypnotarot" class="logo-hypnotarot-compact">
                 <div class="footer-logo">Tarot NFC Innovation</div>
                 <p class="footer-text">L'Étoile vous guide vers l'harmonie cosmique et l'éveil spirituel</p>
                 <p class="footer-text">Expérience mystique authentique • Technologie NFC révolutionnaire</p>
@@ -2396,10 +2328,7 @@
             const assetsToPreload = [
                 'assets/etoile-animation.mp4',
                 'assets/etoile-hypnose.mp3',
-                'assets/etoile-cover.jpg',
-                'assets/logos/hypnotarot-logo.png',
-                'assets/logos/hypnotarot-compact.png',
-                'assets/logos/favicon.ico'
+                'assets/etoile-cover.jpg'
             ];
             
             assetsToPreload.forEach(asset => {
@@ -2413,7 +2342,7 @@
                 } else if (asset.includes('.mp3')) {
                     link.as = 'audio';
                     link.type = 'audio/mpeg';
-                } else if (asset.includes('.jpg') || asset.includes('.png') || asset.includes('.ico')) {
+                } else if (asset.includes('.jpg')) {
                     link.as = 'image';
                 }
                 
@@ -2502,7 +2431,6 @@
             console.log('🌟 L\'Étoile - Arcane XVII - Site NFC initialisé avec succès');
             console.log('💫 Innovation brevetée FR2503190');
             console.log('✨ Système d\'activation sécurisé activé');
-            console.log('🎨 Logo Hypnotarot intégré');
             
             // Tracking du chargement initial
             trackInteraction('Page: L\'Étoile Loaded', {
