@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>L'Étoile XVII • Tarot NFC • Innovation Brevetée</title>
     <meta name="robots" content="noindex, nofollow, noarchive, nosnippet">
-    <link rel="icon" type="image/png" href="assets/logos/favicon.png">
+    <link rel="icon" type="image/png" href="favicon.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
     <meta name="description" content="L'Étoile - Arcane XVII. Expérience immersive de tarot avec technologie NFC. Hypnose, méditation, guidance spirituelle et sagesse ancestrale.">
@@ -102,13 +102,13 @@
             animation: gradientRotate 4s ease infinite;
         }
 
-        /* Logo dans l'activation */
+        /* Logo dans l'activation - compact */
         .activation-logo {
-            width: 80px;
-            height: 80px;
-            background: url('assets/logos/hypnotarot-compact.png') center/contain no-repeat;
+            width: 120px;
+            height: 29px;
+            background: url('hypnotarot-compact.png') center/contain no-repeat;
             margin: 0 auto 20px auto;
-            border-radius: 50%;
+            border-radius: 8px;
             box-shadow: 0 10px 30px rgba(245, 158, 11, 0.3);
         }
 
@@ -242,13 +242,13 @@
             pointer-events: none;
         }
 
-        /* Logo dans l'intro */
+        /* Logo dans l'intro - grand logo */
         .intro-logo {
-            width: 120px;
-            height: 120px;
-            background: url('assets/logos/logo-hypnotarot.png') center/contain no-repeat;
+            width: 280px;
+            height: 68px;
+            background: url('hypnotarot-logo.png') center/contain no-repeat;
             margin-bottom: 20px;
-            border-radius: 50%;
+            border-radius: 12px;
             box-shadow: 0 15px 40px rgba(245, 158, 11, 0.4);
             animation: logoFloat 3s ease-in-out infinite;
         }
@@ -380,11 +380,11 @@
         }
 
         .header-logo {
-            width: 100px;
-            height: 100px;
-            background: url('assets/logos/logo-hypnotarot.png') center/contain no-repeat;
+            width: 200px;
+            height: 48px;
+            background: url('hypnotarot-logo.png') center/contain no-repeat;
             margin: 0 auto 30px auto;
-            border-radius: 50%;
+            border-radius: 8px;
             box-shadow: 0 15px 40px rgba(245, 158, 11, 0.3);
         }
 
@@ -722,6 +722,17 @@
             color: rgba(255, 255, 255, 0.9);
         }
 
+        .content-section ul {
+            padding-left: 20px;
+            margin-bottom: 20px;
+        }
+
+        .content-section li {
+            margin-bottom: 8px;
+            font-size: clamp(0.95rem, 2.2vw, 1.1rem);
+            line-height: 1.6;
+        }
+
         /* Audio player avec sons d'ambiance */
         .audio-section {
             background: linear-gradient(135deg, rgba(139, 92, 246, 0.1), rgba(245, 158, 11, 0.1));
@@ -753,51 +764,14 @@
             filter: drop-shadow(0 10px 20px rgba(0,0,0,0.3));
         }
 
-        /* Contrôles sons d'ambiance */
-        .ambient-controls {
+        .session-info {
             background: var(--glass-bg);
             backdrop-filter: blur(15px);
             border: 1px solid var(--glass-border);
             border-radius: 16px;
             padding: 24px;
-            width: 100%;
-            max-width: 500px;
-            margin: 20px 0;
-        }
-
-        .ambient-controls h4 {
-            color: var(--light-gold);
-            margin-bottom: 16px;
-            font-family: 'Playfair Display', serif;
-            font-size: 1.2rem;
-        }
-
-        .ambient-selector {
-            margin-bottom: 20px;
-        }
-
-        .ambient-selector select {
-            width: 100%;
-            padding: 12px 16px;
-            background: rgba(255,255,255,0.1);
-            border: 2px solid var(--glass-border);
-            border-radius: 12px;
-            color: var(--white);
-            font-size: 0.95rem;
-            font-family: inherit;
-            outline: none;
-            transition: all 0.3s ease;
-        }
-
-        .ambient-selector select:focus {
-            border-color: var(--gold);
-            background: rgba(255,255,255,0.15);
-        }
-
-        .ambient-selector option {
-            background: var(--deep-purple);
-            color: var(--white);
-            padding: 8px;
+            margin-top: 20px;
+            text-align: left;
         }
 
         /* Footer moderne avec logo */
@@ -818,9 +792,9 @@
         }
 
         .footer-logo-img {
-            width: 60px;
-            height: 60px;
-            background: url('assets/logos/favicon.png') center/contain no-repeat;
+            width: 40px;
+            height: 40px;
+            background: url('favicon.png') center/contain no-repeat;
             margin: 0 auto 20px auto;
             border-radius: 50%;
             box-shadow: 0 10px 25px rgba(245, 158, 11, 0.3);
@@ -868,6 +842,21 @@
             .activation-container {
                 padding: 32px 24px;
                 margin: 20px;
+            }
+
+            .intro-logo {
+                width: 240px;
+                height: 58px;
+            }
+
+            .header-logo {
+                width: 160px;
+                height: 39px;
+            }
+
+            .activation-logo {
+                width: 100px;
+                height: 24px;
             }
         }
 
@@ -1070,6 +1059,16 @@
 
             <h4>🌙 Lame Renversée - L'Obscurcissement :</h4>
             <p>Espoirs cruellement déçus, pessimisme envahissant, malchance persistante, déchéance physique et spirituelle. Désillusions profondes, malaises intimes non résolus, incertitude psychologique paralysante, malchance dans les entreprises, passivité excessive qui entrave le progrès, inaction face aux opportunités, erreurs graves d'évaluation des situations et des personnes.</p>
+
+            <h3>Combinaisons Fréquentes avec L'Étoile</h3>
+            <ul>
+                <li><strong>L'Étoile + La Mort :</strong> Grave maladie mais transformation spirituelle profonde</li>
+                <li><strong>L'Étoile + La Roue de Fortune :</strong> Le retour de la chance après une période difficile</li>
+                <li><strong>L'Étoile + Sept de Denier :</strong> Perte d'argent sans gravité, compensée par gains spirituels</li>
+                <li><strong>L'Étoile + L'Amoureux :</strong> Découverte du grand amour, union spirituelle</li>
+                <li><strong>L'Étoile + La Lune :</strong> Tromperie qui se conclut par une révélation libératrice</li>
+                <li><strong>L'Étoile + Le Soleil :</strong> Idéalisme récompensé et glorifié, succès éclatant</li>
+            </ul>
         </section>
 
         <!-- Section 3: Hypnose -->
@@ -1095,6 +1094,8 @@
                     <h4>📋 Protocole de la Séance Stellaire</h4>
                     <p><strong>⏱️ Durée totale :</strong> 18 minutes d'immersion complète</p>
                     <p><strong>🎯 Thème central :</strong> Reconnexion à l'espoir cosmique, purification énergétique profonde et harmonisation avec les cycles célestes</p>
+                    <p><strong>🧘 Instructions préparatoires :</strong> Installez-vous confortablement dans un espace calme. Utilisez des écouteurs de qualité pour une expérience optimale. Fermez les yeux et laissez-vous porter par les vibrations stellaires.</p>
+                    <p><strong>✨ Bénéfices attendus :</strong> Apaisement des troubles émotionnels, restauration de l'espoir, activation de l'intuition naturelle, connexion renforcée avec votre guidance intérieure.</p>
                 </div>
             </div>
         </section>
@@ -1122,6 +1123,8 @@
                     <h4>📋 Protocole de la Séance Méditative</h4>
                     <p><strong>⏱️ Durée totale :</strong> 22 minutes de contemplation profonde</p>
                     <p><strong>🎯 Thème central :</strong> Connexion à l'essence stellaire, développement de l'intuition et communion avec la sagesse universelle</p>
+                    <p><strong>🌟 Technique méditative :</strong> Méditation guidée associant visualisation des constellations, respiration cosmique et ancrage terrestre.</p>
+                    <p><strong>💫 Résultats espérés :</strong> Clarté mentale accrue, paix intérieure durable, éveil de la conscience supérieure, harmonisation des énergies.</p>
                 </div>
             </div>
         </section>
@@ -1134,7 +1137,28 @@
             </div>
             
             <h3>⭐ Le Grand Tirage de l'Espoir Cosmique</h3>
-            <p>Une méthode puissante pour révéler votre guidance spirituelle et vos potentiels cachés.</p>
+            <p>Une méthode puissante en sept cartes disposées selon la constellation de la Grande Ourse, révélant votre chemin de guidance spirituelle et vos potentiels cachés.</p>
+            
+            <h4>🔮 Positions des Cartes :</h4>
+            <ul>
+                <li><strong>Position 1 - L'Étoile Polaire :</strong> Votre guidance spirituelle actuelle</li>
+                <li><strong>Position 2 - L'Horizon Étoilé :</strong> Les opportunités qui s'offrent à vous</li>
+                <li><strong>Position 3 - La Constellation Cachée :</strong> Vos talents inexploités</li>
+                <li><strong>Position 4 - Le Rayon de Lumière :</strong> L'aide qui vous parvient</li>
+                <li><strong>Position 5 - L'Ombre Stellaire :</strong> Ce qu'il faut libérer</li>
+                <li><strong>Position 6 - La Voie Lactée :</strong> Votre chemin d'évolution</li>
+                <li><strong>Position 7 - L'Étoile Filante :</strong> La réalisation de vos souhaits</li>
+            </ul>
+
+            <h3>🌟 Le Tirage de la Purification (3 cartes)</h3>
+            <p>Méthode simple mais efficace pour identifier les blocages énergétiques et trouver le chemin de la guérison spirituelle.</p>
+            
+            <h4>Structure du tirage :</h4>
+            <ul>
+                <li><strong>Carte 1 - Ce qui doit être purifié :</strong> Les énergies stagnantes à libérer</li>
+                <li><strong>Carte 2 - L'eau de purification :</strong> Les moyens de transformation</li>
+                <li><strong>Carte 3 - L'étoile renouvelée :</strong> L'état d'harmonie à atteindre</li>
+            </ul>
         </section>
 
         <!-- Section 6: Métaphore -->
@@ -1145,7 +1169,30 @@
             </div>
             
             <h3>✨ L'Épopée de Céleste, la Puiseuse d'Étoiles ✨</h3>
-            <p>Il était une fois, dans un royaume englouti par une obscurité séculaire, une jeune femme d'une beauté surnaturelle nommée Céleste...</p>
+            
+            <p>Il était une fois, dans un royaume englouti par une obscurité séculaire, une jeune femme d'une beauté surnaturelle nommée Céleste. Ses cheveux dorés captaient les derniers rayons de lumière céleste, et ses yeux reflétaient la sagesse des anciennes civilisations perdues.</p>
+
+            <p>Depuis des années, le royaume languissait sous un voile de tristesse et de désespoir. Les récoltes avaient cessé de pousser, les rivières s'étaient taries, et les habitants avaient perdu foi en l'avenir. Les sages avaient prédit qu'seule une âme pure pourrait restaurer l'harmonie entre le ciel et la terre.</p>
+
+            <h4>🌟 La Révélation Nocturne</h4>
+            <p>Une nuit, guidée par un rêve prophétique, Céleste se dirigea vers la source sacrée au cœur de la forêt étoilée. Là, sous un ciel parsemé de sept étoiles brillantes disposées autour d'une huitième étoile centrale aux seize branches, elle reçut une vision divine.</p>
+
+            <p>Les déesses des eaux lui apparurent et lui confièrent deux amphores magiques : l'une contenait l'eau de la purification terrestre, l'autre l'essence de la sagesse céleste. "Ton cœur pur et tes intentions désintéressées font de toi la gardienne de l'équilibre cosmique", lui dirent-elles.</p>
+
+            <h4>💧 Le Rituel de Régénération</h4>
+            <p>Céleste comprit sa mission. Elle devait verser l'eau sacrée selon un rituel ancien : une main dirigée vers la terre pour nourrir et purifier, l'autre vers les cieux pour maintenir la connexion divine. Ce geste symbolique rétablirait le flux énergétique entre les deux mondes.</p>
+
+            <p>Agenouillée au bord de la source, dans sa nudité symbolisant la pureté absolue de l'âme, elle commença le rituel sous le regard bienveillant des étoiles. Chaque goutte d'eau versée ravivait l'espoir dans le cœur des habitants, chaque geste gracieux harmonisait les énergies cosmiques.</p>
+
+            <h4>🌈 La Renaissance du Royaume</h4>
+            <p>Peu à peu, la magie opéra. Les sources se remirent à couler, les jardins refleurirent, et une lumière douce et dorée enveloppa le royaume. Mais plus important encore, l'espoir renaissait dans les cœurs. Les habitants retrouvèrent leur capacité à rêver, à créer, à aimer.</p>
+
+            <p>Céleste était devenue L'Étoile, symbole éternel d'espérance et de renouveau. Son histoire nous enseigne que même dans les moments les plus sombres, il existe toujours une lumière intérieure capable de transformer notre réalité et celle de notre entourage.</p>
+
+            <h4>🔮 L'Enseignement Spirituel</h4>
+            <p>Cette métaphore révèle les mystères profonds de L'Étoile : nous portons tous en nous cette capacité de purification et de régénération. Comme Céleste, nous pouvons devenir des canaux entre le divin et le terrestre, des gardiens de l'espoir pour nous-mêmes et pour autrui.</p>
+
+            <p>L'Étoile nous rappelle que la vraie beauté réside dans la pureté d'intention, que la vraie force naît de la vulnérabilité acceptée, et que la vraie magie émerge de notre capacité à faire confiance aux mystères de l'univers.</p>
         </section>
 
         <!-- Footer moderne avec logo -->
