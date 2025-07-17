@@ -8,107 +8,8 @@
     <link rel="icon" type="image/png" href="assets/logos/favicon.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
-    <meta name="description" content="L'Étoile - Arcane XVII. Expérience immersive de tarot avec technologie NFC. Hypnose, guidance spirituelle et sagesse ancestrale.">
+    <meta name="description" content="L'Étoile - Arcane XVII. Expérience immersive de tarot avec technologie NFC. Hypnose, méditation, guidance spirituelle et sagesse ancestrale.">
     <style>
-        /* Logo Hypnotarot Styles - Optimisé pour 698x169 */
-        .logo-hypnotarot {
-            height: 60px;
-            width: auto;
-            max-width: 280px;
-            transition: all 0.3s ease;
-            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));
-        }
-
-        .logo-hypnotarot:hover {
-            transform: scale(1.05);
-            filter: drop-shadow(0 4px 8px rgba(245, 158, 11, 0.3));
-        }
-
-        .logo-hypnotarot-compact {
-            height: 45px;
-            width: auto;
-            max-width: 200px;
-            margin-bottom: 15px;
-            transition: all 0.3s ease;
-        }
-
-        .logo-hypnotarot-header {
-            height: 80px;
-            width: auto;
-            max-width: 320px;
-            margin-right: 20px;
-            transition: all 0.3s ease;
-        }
-
-        .logo-hypnotarot-intro {
-            height: 100px;
-            width: auto;
-            max-width: 400px;
-            margin-bottom: 40px;
-            transition: all 0.3s ease;
-            filter: drop-shadow(0 4px 8px rgba(245, 158, 11, 0.3));
-        }
-
-        .logo-hypnotarot-activation {
-            height: 80px;
-            width: auto;
-            max-width: 350px;
-            margin-bottom: 30px;
-            transition: all 0.3s ease;
-        }
-
-        @media (max-width: 768px) {
-            .logo-hypnotarot-header {
-                height: 60px;
-                max-width: 240px;
-                margin-right: 15px;
-            }
-            .logo-hypnotarot {
-                height: 45px;
-                max-width: 200px;
-            }
-            .logo-hypnotarot-compact {
-                height: 35px;
-                max-width: 150px;
-            }
-            .logo-hypnotarot-intro {
-                height: 70px;
-                max-width: 280px;
-                margin-bottom: 25px;
-            }
-            .logo-hypnotarot-activation {
-                height: 60px;
-                max-width: 240px;
-                margin-bottom: 20px;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .logo-hypnotarot-header {
-                height: 45px;
-                max-width: 180px;
-                margin-right: 10px;
-            }
-            .logo-hypnotarot {
-                height: 35px;
-                max-width: 150px;
-            }
-            .logo-hypnotarot-compact {
-                height: 30px;
-                max-width: 120px;
-            }
-            .logo-hypnotarot-intro {
-                height: 55px;
-                max-width: 220px;
-                margin-bottom: 20px;
-            }
-            .logo-hypnotarot-activation {
-                height: 50px;
-                max-width: 200px;
-                margin-bottom: 15px;
-            }
-        }
-
         :root {
             --primary-purple: #6366f1;
             --secondary-purple: #8b5cf6;
@@ -199,6 +100,16 @@
             z-index: -1;
             background-size: 300% 300%;
             animation: gradientRotate 4s ease infinite;
+        }
+
+        /* Logo dans l'activation - compact */
+        .activation-logo {
+            width: 120px;
+            height: 29px;
+            background: url('assets/logos/hypnotarot-compact.png') center/contain no-repeat;
+            margin: 0 auto 20px auto;
+            border-radius: 8px;
+            box-shadow: 0 10px 30px rgba(245, 158, 11, 0.3);
         }
 
         .activation-title {
@@ -331,6 +242,22 @@
             pointer-events: none;
         }
 
+        /* Logo dans l'intro - grand logo */
+        .intro-logo {
+            width: 280px;
+            height: 68px;
+            background: url('assets/logos/hypnotarot-logo.png') center/contain no-repeat;
+            margin-bottom: 20px;
+            border-radius: 12px;
+            box-shadow: 0 15px 40px rgba(245, 158, 11, 0.4);
+            animation: logoFloat 3s ease-in-out infinite;
+        }
+
+        @keyframes logoFloat {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+
         .intro-title {
             font-family: 'Playfair Display', serif;
             font-size: clamp(2rem, 6vw, 3.5rem);
@@ -385,6 +312,7 @@
             transition: all 0.3s ease;
             text-decoration: none;
             display: inline-block;
+            border: none;
         }
 
         .enter-btn:hover {
@@ -443,12 +371,21 @@
             50% { background-position: 100% 50%; }
         }
 
-        /* Header moderne */
+        /* Header moderne avec logo */
         header {
             text-align: center;
             margin-bottom: 60px;
             padding: 60px 0;
             position: relative;
+        }
+
+        .header-logo {
+            width: 200px;
+            height: 48px;
+            background: url('assets/logos/hypnotarot-logo.png') center/contain no-repeat;
+            margin: 0 auto 30px auto;
+            border-radius: 8px;
+            box-shadow: 0 15px 40px rgba(245, 158, 11, 0.3);
         }
 
         .header-glow {
@@ -785,7 +722,18 @@
             color: rgba(255, 255, 255, 0.9);
         }
 
-        /* Audio player AMÉLIORÉ avec sons d'ambiance */
+        .content-section ul {
+            padding-left: 20px;
+            margin-bottom: 20px;
+        }
+
+        .content-section li {
+            margin-bottom: 8px;
+            font-size: clamp(0.95rem, 2.2vw, 1.1rem);
+            line-height: 1.6;
+        }
+
+        /* Audio player avec sons d'ambiance */
         .audio-section {
             background: linear-gradient(135deg, rgba(139, 92, 246, 0.1), rgba(245, 158, 11, 0.1));
             border: 1px solid var(--glass-border);
@@ -816,248 +764,17 @@
             filter: drop-shadow(0 10px 20px rgba(0,0,0,0.3));
         }
 
-        /* Contrôles sons d'ambiance */
-        .ambient-controls {
+        .session-info {
             background: var(--glass-bg);
             backdrop-filter: blur(15px);
             border: 1px solid var(--glass-border);
             border-radius: 16px;
             padding: 24px;
-            width: 100%;
-            max-width: 500px;
-            margin: 20px 0;
-        }
-
-        .ambient-controls h4 {
-            color: var(--light-gold);
-            margin-bottom: 16px;
-            font-family: 'Playfair Display', serif;
-            font-size: 1.2rem;
-        }
-
-        .ambient-selector {
-            margin-bottom: 20px;
-        }
-
-        .ambient-selector select {
-            width: 100%;
-            padding: 12px 16px;
-            background: rgba(255,255,255,0.1);
-            border: 2px solid var(--glass-border);
-            border-radius: 12px;
-            color: var(--white);
-            font-size: 0.95rem;
-            font-family: inherit;
-            outline: none;
-            transition: all 0.3s ease;
-        }
-
-        .ambient-selector select:focus {
-            border-color: var(--gold);
-            background: rgba(255,255,255,0.15);
-        }
-
-        .ambient-selector option {
-            background: var(--deep-purple);
-            color: var(--white);
-            padding: 8px;
-        }
-
-        .ambient-description {
-            background: rgba(0,0,0,0.1);
-            padding: 15px;
-            border-radius: 8px;
-            border-left: 3px solid var(--gold);
-            margin: 15px 0;
-            font-size: 0.9rem;
-            color: var(--off-white);
-            line-height: 1.5;
-        }
-
-        .ambient-description p {
-            margin: 0;
-            font-style: italic;
-        }
-
-        .ambient-description strong {
-            color: var(--gold);
-        }
-
-        .volume-controls {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 16px;
-            margin: 20px 0;
-        }
-
-        .volume-control {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            font-size: 0.9rem;
-        }
-
-        .volume-control label {
-            min-width: 140px;
-            color: var(--off-white);
-            font-weight: 500;
-        }
-
-        .volume-control input[type="range"] {
-            flex: 1;
-            height: 8px;
-            background: rgba(255,255,255,0.2);
-            border-radius: 4px;
-            outline: none;
-            transition: all 0.3s ease;
-            -webkit-appearance: none;
-            appearance: none;
-        }
-
-        .volume-control input[type="range"]::-webkit-slider-thumb {
-            -webkit-appearance: none;
-            appearance: none;
-            width: 20px;
-            height: 20px;
-            background: linear-gradient(45deg, var(--gold), var(--light-gold));
-            border-radius: 50%;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .volume-control input[type="range"]::-webkit-slider-thumb:hover {
-            transform: scale(1.2);
-            box-shadow: 0 0 10px rgba(245, 158, 11, 0.5);
-        }
-
-        .volume-control input[type="range"]::-moz-range-thumb {
-            width: 20px;
-            height: 20px;
-            background: linear-gradient(45deg, var(--gold), var(--light-gold));
-            border-radius: 50%;
-            cursor: pointer;
-            border: none;
-        }
-
-        .volume-control span {
-            min-width: 50px;
-            color: var(--gold);
-            font-weight: 600;
-            text-align: right;
-        }
-
-        .ambient-status {
-            background: rgba(0,0,0,0.2);
-            padding: 12px 16px;
-            border-radius: 8px;
-            border-left: 3px solid var(--gold);
-            font-size: 0.85rem;
-            color: var(--off-white);
+            margin-top: 20px;
             text-align: left;
         }
 
-        .ambient-status.active {
-            border-left-color: #10b981;
-            background: rgba(16, 185, 129, 0.1);
-        }
-
-        .ambient-status.active span {
-            color: #10b981;
-        }
-
-        .audio-status {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 12px;
-            font-size: 0.9rem;
-            color: var(--light-gold);
-            margin-top: 15px;
-        }
-
-        .status-indicator {
-            width: 8px;
-            height: 8px;
-            border-radius: 50%;
-            background: var(--light-gold);
-            animation: pulse 2s infinite;
-        }
-
-        .status-indicator.active {
-            background: #10b981;
-            animation: pulse 1s infinite;
-        }
-
-        @keyframes pulse {
-            0%, 100% { opacity: 0.5; transform: scale(1); }
-            50% { opacity: 1; transform: scale(1.2); }
-        }
-
-        .wake-lock-toggle {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            margin-top: 15px;
-            font-size: 0.9rem;
-        }
-
-        .wake-lock-switch {
-            position: relative;
-            width: 50px;
-            height: 25px;
-            background: rgba(255,255,255,0.2);
-            border-radius: 25px;
-            cursor: pointer;
-            transition: background 0.3s;
-        }
-
-        .wake-lock-switch.active {
-            background: var(--gold);
-        }
-
-        .wake-lock-switch::before {
-            content: '';
-            position: absolute;
-            top: 2px;
-            left: 2px;
-            width: 21px;
-            height: 21px;
-            background: white;
-            border-radius: 50%;
-            transition: transform 0.3s;
-        }
-
-        .wake-lock-switch.active::before {
-            transform: translateX(25px);
-        }
-
-        .session-info {
-            background: var(--glass-bg);
-            backdrop-filter: blur(10px);
-            border: 1px solid var(--glass-border);
-            padding: 24px;
-            border-radius: 16px;
-            margin-top: 24px;
-            text-align: left;
-        }
-
-        /* Lists */
-        ul, ol {
-            padding-left: 24px;
-            margin: 20px 0;
-        }
-
-        li {
-            margin-bottom: 12px;
-            color: rgba(255, 255, 255, 0.9);
-            font-size: clamp(0.9rem, 2vw, 1rem);
-        }
-
-        li::marker {
-            color: var(--gold);
-        }
-
-        /* Footer moderne */
+        /* Footer moderne avec logo */
         footer {
             text-align: center;
             margin-top: 80px;
@@ -1072,6 +789,15 @@
         .footer-content {
             max-width: 600px;
             margin: 0 auto;
+        }
+
+        .footer-logo-img {
+            width: 40px;
+            height: 40px;
+            background: url('assets/logos/favicon.png') center/contain no-repeat;
+            margin: 0 auto 20px auto;
+            border-radius: 50%;
+            box-shadow: 0 10px 25px rgba(245, 158, 11, 0.3);
         }
 
         .footer-logo {
@@ -1095,7 +821,7 @@
             font-weight: 500;
         }
 
-        /* RESPONSIVE MOBILE OPTIMISÉ */
+        /* RESPONSIVE MOBILE */
         @media (max-width: 768px) {
             .container {
                 padding: 16px;
@@ -1106,10 +832,6 @@
                 gap: 16px;
             }
             
-            .content-section {
-                margin-bottom: 32px;
-            }
-
             .nav-btn {
                 padding: 24px 20px;
                 text-align: center;
@@ -1117,89 +839,24 @@
                 gap: 12px;
             }
 
-            header {
-                padding: 40px 0;
-                margin-bottom: 40px;
-            }
-
-            .audio-section {
-                padding: 24px 16px;
-            }
-
             .activation-container {
                 padding: 32px 24px;
                 margin: 20px;
             }
 
-            .volume-control {
-                flex-direction: column;
-                gap: 8px;
-                align-items: flex-start;
+            .intro-logo {
+                width: 240px;
+                height: 58px;
             }
 
-            .volume-control label {
-                min-width: auto;
-                font-size: 0.85rem;
+            .header-logo {
+                width: 160px;
+                height: 39px;
             }
 
-            .volume-control input[type="range"] {
-                width: 100%;
-                height: 10px;
-            }
-
-            .volume-control input[type="range"]::-webkit-slider-thumb {
-                width: 24px;
+            .activation-logo {
+                width: 100px;
                 height: 24px;
-            }
-
-            .volume-control span {
-                font-size: 0.9rem;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .intro-title {
-                font-size: 2rem;
-            }
-
-            .enter-btn {
-                padding: 16px 32px;
-                font-size: 1rem;
-            }
-
-            .nav-icon {
-                width: 40px;
-                height: 40px;
-                font-size: 1.2rem;
-            }
-
-            .activation-container {
-                padding: 24px 20px;
-            }
-
-            .code-input {
-                font-size: 1rem;
-                padding: 16px 20px;
-            }
-
-            .volume-control input[type="range"] {
-                height: 12px;
-            }
-
-            .volume-control input[type="range"]::-webkit-slider-thumb {
-                width: 26px;
-                height: 26px;
-            }
-        }
-
-        /* Optimisations tactiles */
-        @media (hover: none) and (pointer: coarse) {
-            .nav-card:hover {
-                transform: none;
-            }
-            
-            .video-container:hover {
-                transform: none;
             }
         }
 
@@ -1215,31 +872,7 @@
             transform: translateY(0);
         }
 
-        /* Loading state */
-        .loading {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 12px;
-            padding: 24px;
-            color: var(--gold);
-        }
-
-        .spinner {
-            width: 24px;
-            height: 24px;
-            border: 2px solid rgba(245, 158, 11, 0.3);
-            border-top: 2px solid var(--gold);
-            border-radius: 50%;
-            animation: spin 1s linear infinite;
-        }
-
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-
-        /* Smooth scrolling and performance */
+        /* Smooth scrolling */
         html {
             scroll-behavior: smooth;
         }
@@ -1256,7 +889,7 @@
     <!-- Page d'activation -->
     <div class="activation-screen" id="activationScreen">
         <div class="activation-container">
-            <img src="assets/logos/hypnotarot-logo.png" alt="Hypnotarot" class="logo-hypnotarot-activation">
+            <div class="activation-logo"></div>
             <h1 class="activation-title">⭐ L'ÉTOILE ⭐</h1>
             <p class="activation-subtitle">Activez votre carte pour révéler votre destinée</p>
             
@@ -1287,7 +920,7 @@
     
     <!-- Page d'accueil avec animation -->
     <div class="intro-screen" id="introScreen">
-        <img src="assets/logos/hypnotarot-logo.png" alt="Hypnotarot" class="logo-hypnotarot-intro">
+        <div class="intro-logo"></div>
         <h1 class="intro-title">⭐ L'ÉTOILE ⭐</h1>
         <div class="intro-video-container">
             <video autoplay muted loop playsinline poster="assets/etoile-cover.jpg" id="introVideo">
@@ -1304,14 +937,14 @@
     <div class="particles" id="particles"></div>
 
     <div class="container" id="mainContainer">
-        <!-- Header ultra-moderne -->
+        <!-- Header ultra-moderne avec logo -->
         <header>
+            <div class="header-logo"></div>
             <div class="header-glow"></div>
             <h1>⭐ L'ÉTOILE ⭐</h1>
             <p class="subtitle">Arcane Majeur XVII</p>
             <p class="tagline">Symbole d'Espérance & Harmonie Céleste</p>
             <div class="patent-badge">
-                <img src="assets/logos/hypnotarot-logo.png" alt="Hypnotarot Logo" class="logo-hypnotarot-header">
                 🛡️ Innovation Brevetée FR2503190
             </div>
         </header>
@@ -1354,6 +987,16 @@
                     <div class="nav-text">
                         <div>Séance d'Hypnose</div>
                         <div class="nav-subtitle">Voyage vers l'harmonie intérieure</div>
+                    </div>
+                </button>
+            </div>
+            
+            <div class="nav-card-hypnose" onclick="showSection('meditation')">
+                <button class="nav-btn">
+                    <div class="nav-icon">🎧</div>
+                    <div class="nav-text">
+                        <div>Séance de Méditation</div>
+                        <div class="nav-subtitle">Connexion à l'essence stellaire</div>
                     </div>
                 </button>
             </div>
@@ -1428,7 +1071,7 @@
             </ul>
         </section>
 
-        <!-- Section 3: Hypnose EXACTEMENT comme dans votre version -->
+        <!-- Section 3: Hypnose -->
         <section id="hypnose" class="content-section scroll-reveal">
             <div class="section-header">
                 <h2>Séance d'Hypnose de L'Étoile</h2>
@@ -1445,92 +1088,48 @@
                             Votre navigateur ne supporte pas cette expérience audio immersive.
                         </audio>
                     </div>
-                    
-                    <!-- Contrôles sons d'ambiance -->
-                    <div class="ambient-controls">
-                        <h4>🌊 Sons d'Induction - Version Essentielle</h4>
-                        <div class="ambient-selector">
-                            <select id="ambianceSelect" onchange="changeAmbiance()">
-                                <option value="none">Aucun son d'ambiance</option>
-                                <option value="binaural">🧠 Fréquences Binaurales (Thêta 6Hz) - Induction hypnotique profonde</option>
-                                <option value="schumann">⚡ Résonance de Schumann (7.83Hz) - Harmonisation terrestre</option>
-                                <option value="whitenoise">🔇 Bruit Blanc Premium - Isolation sonore totale</option>
-                            </select>
-                        </div>
-                        
-                        <div class="ambient-description" id="ambientDescription">
-                            <p><em>Sélectionnez un son d'ambiance pour enrichir votre expérience hypnotique</em></p>
-                        </div>
-                        
-                        <div class="volume-controls">
-                            <div class="volume-control">
-                                <label>🎙️ Volume Hypnose:</label>
-                                <input type="range" id="hypnosisVolume" min="0" max="100" value="80" onchange="updateVolumes()">
-                                <span id="hypnosisVolumeText">80%</span>
-                            </div>
-                            <div class="volume-control">
-                                <label>🌊 Volume Ambiance:</label>
-                                <input type="range" id="ambianceVolume" min="0" max="100" value="30" onchange="updateVolumes()">
-                                <span id="ambianceVolumeText">30%</span>
-                            </div>
-                        </div>
-                        
-                        <div class="ambient-status" id="ambientStatus">
-                            <span>🔇 Aucune ambiance sélectionnée</span>
-                        </div>
-                    </div>
-                    
-                    <div class="audio-status">
-                        <div class="status-indicator" id="statusIndicator"></div>
-                        <span id="statusText">Prêt pour l'écoute</span>
-                    </div>
-                    
-                    <div class="wake-lock-toggle">
-                        <span>Maintenir l'écran allumé :</span>
-                        <div class="wake-lock-switch" id="wakeLockSwitch" onclick="toggleWakeLock()"></div>
-                    </div>
                 </div>
                 
                 <div class="session-info">
                     <h4>📋 Protocole de la Séance Stellaire</h4>
                     <p><strong>⏱️ Durée totale :</strong> 18 minutes d'immersion complète</p>
                     <p><strong>🎯 Thème central :</strong> Reconnexion à l'espoir cosmique, purification énergétique profonde et harmonisation avec les cycles célestes</p>
-                    
-                    <h4>🎭 Objectifs Transformationnels :</h4>
-                    <ul>
-                        <li><strong>🌟 Réactivation de l'espoir :</strong> Retrouver une confiance inébranlable en l'avenir</li>
-                        <li><strong>💎 Reconnexion à l'essence :</strong> Redécouvrir votre beauté intérieure authentique</li>
-                        <li><strong>🔄 Purification énergétique :</strong> Nettoyer les résidus émotionnels et les blocages</li>
-                        <li><strong>⚖️ Harmonisation cosmique :</strong> Aligner vos vibrations avec les rythmes universels</li>
-                        <li><strong>🎨 Activation créative :</strong> Libérer votre potentiel artistique et intuitif</li>
-                    </ul>
-                    
-                    <h4>📚 Instructions Préparatoires :</h4>
-                    <ul>
-                        <li>🏡 Créez un sanctuaire de silence dans un espace consacré</li>
-                        <li>🎧 Utilisez des écouteurs haute qualité pour une immersion sonore optimale</li>
-                        <li>🕯️ Allumez une bougie blanche ou dorée (optionnel mais recommandé)</li>
-                        <li>📱 Activez le mode "Ne pas déranger" et le maintien d'écran</li>
-                        <li>🧘 Adoptez une position de repos complet (allongé de préférence)</li>
-                        <li>👁️ Fermez les yeux et respirez consciemment avant de commencer</li>
-                    </ul>
+                    <p><strong>🧘 Instructions préparatoires :</strong> Installez-vous confortablement dans un espace calme. Utilisez des écouteurs de qualité pour une expérience optimale. Fermez les yeux et laissez-vous porter par les vibrations stellaires.</p>
+                    <p><strong>✨ Bénéfices attendus :</strong> Apaisement des troubles émotionnels, restauration de l'espoir, activation de l'intuition naturelle, connexion renforcée avec votre guidance intérieure.</p>
                 </div>
             </div>
-
-            <h3>🌙 Préparation Rituelle Pré-Séance</h3>
-            <ol>
-                <li><strong>Purification de l'espace :</strong> Aérez la pièce et visualisez une lumière dorée qui chasse toute énergie stagnante</li>
-                <li><strong>Centrage énergétique :</strong> Placez une main sur le cœur, l'autre sur le plexus solaire</li>
-                <li><strong>Intention claire :</strong> Formulez mentalement votre désir de transformation</li>
-                <li><strong>Connexion stellaire :</strong> Imaginez un fil de lumière vous reliant à l'étoile polaire</li>
-                <li><strong>Abandon confiant :</strong> Lâchez prise et faites confiance au processus</li>
-            </ol>
-
-            <h3>🌅 Intégration Post-Séance</h3>
-            <p>Après cette expérience transformatrice, accordez-vous un retour en douceur à la réalité ordinaire. Buvez lentement un grand verre d'eau pure, bougez délicatement vos membres et prenez plusieurs respirations conscientes. Notez immédiatement vos ressentis, visions ou messages reçus dans un carnet dédié à votre évolution spirituelle. Cette pratique régulière amplifiera les bénéfices et créera un pont permanent vers votre guidance intérieure.</p>
         </section>
 
-        <!-- Section 4: Tirages -->
+        <!-- Section 4: Méditation -->
+        <section id="meditation" class="content-section scroll-reveal">
+            <div class="section-header">
+                <h2>Séance de Méditation de L'Étoile</h2>
+                <p class="section-subtitle">Connexion contemplative à l'essence stellaire et à la sagesse cosmique</p>
+            </div>
+            
+            <div class="audio-section">
+                <h3>🎧 Contemplation: "Dialogue avec l'Étoile Intérieure"</h3>
+                
+                <div class="audio-controls">
+                    <div class="audio-player">
+                        <audio controls preload="metadata" id="meditationAudio">
+                            <source src="assets/etoile-meditation.mp3" type="audio/mpeg">
+                            Votre navigateur ne supporte pas cette expérience audio contemplative.
+                        </audio>
+                    </div>
+                </div>
+                
+                <div class="session-info">
+                    <h4>📋 Protocole de la Séance Méditative</h4>
+                    <p><strong>⏱️ Durée totale :</strong> 6 minutes et 30 secondes de contemplation profonde</p>
+                    <p><strong>🎯 Thème central :</strong> Connexion à l'essence stellaire, développement de l'intuition et communion avec la sagesse universelle</p>
+                    <p><strong>🌟 Technique méditative :</strong> Méditation guidée associant visualisation des constellations, respiration cosmique et ancrage terrestre.</p>
+                    <p><strong>💫 Résultats espérés :</strong> Clarté mentale accrue, paix intérieure durable, éveil de la conscience supérieure, harmonisation des énergies.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 5: Tirages -->
         <section id="tirages" class="content-section scroll-reveal">
             <div class="section-header">
                 <h2>Méthodes de Tirage Étoilées</h2>
@@ -1562,7 +1161,7 @@
             </ul>
         </section>
 
-        <!-- Section 5: Métaphore -->
+        <!-- Section 6: Métaphore -->
         <section id="metaphore" class="content-section scroll-reveal">
             <div class="section-header">
                 <h2>La Métaphore Éternelle de L'Étoile</h2>
@@ -1596,11 +1195,11 @@
             <p>L'Étoile nous rappelle que la vraie beauté réside dans la pureté d'intention, que la vraie force naît de la vulnérabilité acceptée, et que la vraie magie émerge de notre capacité à faire confiance aux mystères de l'univers.</p>
         </section>
 
-        <!-- Footer moderne -->
+        <!-- Footer moderne avec logo -->
         <footer class="scroll-reveal">
             <div class="footer-content">
-                <img src="assets/logos/hypnotarot-compact.png" alt="Hypnotarot" class="logo-hypnotarot-compact">
-                <div class="footer-logo">Tarot NFC Innovation</div>
+                <div class="footer-logo-img"></div>
+                <div class="footer-logo">HypnoTarot</div>
                 <p class="footer-text">L'Étoile vous guide vers l'harmonie cosmique et l'éveil spirituel</p>
                 <p class="footer-text">Expérience mystique authentique • Technologie NFC révolutionnaire</p>
                 <p class="patent-info">🛡️ Innovation Brevetée FR2503190 • 2025</p>
@@ -1609,255 +1208,8 @@
     </div>
 
     <script>
-        // Variables globales pour la gestion audio et activation
-        let wakeLock = null;
-        let audioElement = null;
-        let isAudioActive = false;
+        // Variables globales
         let isActivated = false;
-        let ambianceAudio = null;
-        let audioContext = null;
-        let ambianceNodes = {};
-
-        // Générateur de sons d'ambiance
-        class AmbianceGenerator {
-            constructor() {
-                this.audioContext = null;
-                this.masterGain = null;
-                this.sources = {};
-            }
-
-            async init() {
-                if (!this.audioContext) {
-                    this.audioContext = new (window.AudioContext || window.webkitAudioContext)();
-                    this.masterGain = this.audioContext.createGain();
-                    this.masterGain.connect(this.audioContext.destination);
-                    this.masterGain.gain.value = 0.3; // Volume par défaut 30%
-                }
-                
-                if (this.audioContext.state === 'suspended') {
-                    await this.audioContext.resume();
-                }
-            }
-
-            // Générateur de fréquences binaurales
-            createBinauralBeats(frequency = 6) {
-                const oscillator1 = this.audioContext.createOscillator();
-                const oscillator2 = this.audioContext.createOscillator();
-                const gain1 = this.audioContext.createGain();
-                const gain2 = this.audioContext.createGain();
-                const merger = this.audioContext.createChannelMerger(2);
-
-                oscillator1.frequency.setValueAtTime(200, this.audioContext.currentTime);
-                oscillator2.frequency.setValueAtTime(200 + frequency, this.audioContext.currentTime);
-                
-                oscillator1.type = 'sine';
-                oscillator2.type = 'sine';
-                
-                gain1.gain.value = 0.1;
-                gain2.gain.value = 0.1;
-
-                oscillator1.connect(gain1);
-                oscillator2.connect(gain2);
-                gain1.connect(merger, 0, 0);
-                gain2.connect(merger, 0, 1);
-                merger.connect(this.masterGain);
-
-                return { oscillator1, oscillator2, gain1, gain2 };
-            }
-
-            // Générateur de bruit blanc amélioré (moins saccadé)
-            createWhiteNoise() {
-                const bufferSize = this.audioContext.sampleRate * 4; // Buffer plus long
-                const buffer = this.audioContext.createBuffer(2, bufferSize, this.audioContext.sampleRate);
-                
-                // Stéréo pour un meilleur rendu
-                for (let channel = 0; channel < 2; channel++) {
-                    const output = buffer.getChannelData(channel);
-                    for (let i = 0; i < bufferSize; i++) {
-                        // Algorithme Pink Noise plus doux
-                        output[i] = (Math.random() * 2 - 1) * 0.3;
-                        
-                        // Lissage pour réduire les saccades
-                        if (i > 0) {
-                            output[i] = output[i] * 0.8 + output[i-1] * 0.2;
-                        }
-                    }
-                }
-
-                const source = this.audioContext.createBufferSource();
-                source.buffer = buffer;
-                source.loop = true;
-                
-                // Filtre passe-bas pour adoucir
-                const filter = this.audioContext.createBiquadFilter();
-                filter.type = 'lowpass';
-                filter.frequency.value = 8000;
-                filter.Q.value = 0.5;
-                
-                const gain = this.audioContext.createGain();
-                gain.gain.value = 0.03;
-                
-                source.connect(filter);
-                filter.connect(gain);
-                gain.connect(this.masterGain);
-
-                return { source, gain, filter };
-            }
-
-            // Résonance de Schumann (7.83 Hz)
-            createSchumannResonance() {
-                const carrier = this.audioContext.createOscillator();
-                const modulator = this.audioContext.createOscillator();
-                const gain = this.audioContext.createGain();
-                const modulatorGain = this.audioContext.createGain();
-                
-                carrier.frequency.value = 110; // Note base
-                modulator.frequency.value = 7.83; // Fréquence Schumann
-                
-                carrier.type = 'sine';
-                modulator.type = 'sine';
-                
-                modulatorGain.gain.value = 50;
-                gain.gain.value = 0.04;
-                
-                modulator.connect(modulatorGain);
-                modulatorGain.connect(carrier.frequency);
-                carrier.connect(gain);
-                gain.connect(this.masterGain);
-
-                return { carrier, modulator, gain };
-            }
-
-            async startAmbiance(type) {
-                await this.init();
-                this.stopAmbiance();
-
-                switch (type) {
-                    case 'binaural':
-                        this.sources.current = this.createBinauralBeats(6);
-                        this.sources.current.oscillator1.start();
-                        this.sources.current.oscillator2.start();
-                        break;
-                    
-                    case 'whitenoise':
-                        this.sources.current = this.createWhiteNoise();
-                        this.sources.current.source.start();
-                        break;
-                    
-                    case 'schumann':
-                        this.sources.current = this.createSchumannResonance();
-                        this.sources.current.carrier.start();
-                        this.sources.current.modulator.start();
-                        break;
-                }
-            }
-
-            stopAmbiance() {
-                if (this.sources.current) {
-                    try {
-                        if (Array.isArray(this.sources.current)) {
-                            this.sources.current.forEach(node => {
-                                if (node.oscillator) node.oscillator.stop();
-                            });
-                        } else {
-                            if (this.sources.current.oscillator) this.sources.current.oscillator.stop();
-                            if (this.sources.current.oscillator1) this.sources.current.oscillator1.stop();
-                            if (this.sources.current.oscillator2) this.sources.current.oscillator2.stop();
-                            if (this.sources.current.source) this.sources.current.source.stop();
-                            if (this.sources.current.carrier) this.sources.current.carrier.stop();
-                            if (this.sources.current.modulator) this.sources.current.modulator.stop();
-                            if (this.sources.current.lfo) this.sources.current.lfo.stop();
-                        }
-                    } catch (e) {
-                        console.log('Audio node already stopped');
-                    }
-                    this.sources.current = null;
-                }
-            }
-
-            setVolume(volume) {
-                if (this.masterGain) {
-                    this.masterGain.gain.value = volume / 100;
-                }
-            }
-        }
-
-        // Instance globale du générateur d'ambiance
-        let ambianceGenerator = new AmbianceGenerator();
-
-        // Contrôle des sons d'ambiance
-        async function changeAmbiance() {
-            const select = document.getElementById('ambianceSelect');
-            const status = document.getElementById('ambientStatus');
-            const description = document.getElementById('ambientDescription');
-            const selectedValue = select.value;
-            
-            // Descriptions détaillées pour chaque ambiance
-            const descriptions = {
-                none: '<p><em>Sélectionnez un son d\'ambiance pour enrichir votre expérience hypnotique</em></p>',
-                binaural: '<p><strong>Fréquences Binaurales Thêta (6Hz)</strong><br><em>Ces ondes cérébrales favorisent un état de relaxation profonde et de créativité. Parfait pour la méditation et l\'induction hypnotique.</em></p>',
-                schumann: '<p><strong>Résonance de Schumann (7.83Hz)</strong><br><em>Fréquence naturelle de la Terre qui harmonise le système nerveux et favorise l\'équilibre énergétique.</em></p>',
-                whitenoise: '<p><strong>Bruit Blanc Premium</strong><br><em>Masque les bruits extérieurs et crée un cocon sonore optimal pour l\'immersion totale.</em></p>'
-            };
-
-            description.innerHTML = descriptions[selectedValue] || descriptions.none;
-
-            if (selectedValue === 'none') {
-                ambianceGenerator.stopAmbiance();
-                status.innerHTML = '<span>🔇 Aucune ambiance sélectionnée</span>';
-                status.classList.remove('active');
-            } else {
-                try {
-                    await ambianceGenerator.startAmbiance(selectedValue);
-                    status.innerHTML = `<span>🎵 Ambiance active : ${select.options[select.selectedIndex].text}</span>`;
-                    status.classList.add('active');
-                } catch (error) {
-                    console.error('Erreur lors du démarrage de l\'ambiance:', error);
-                    status.innerHTML = '<span>❌ Erreur de chargement</span>';
-                    status.classList.remove('active');
-                }
-            }
-        }
-
-        // Gestion des volumes
-        function updateVolumes() {
-            const hypnosisVolume = document.getElementById('hypnosisVolume').value;
-            const ambianceVolume = document.getElementById('ambianceVolume').value;
-            
-            document.getElementById('hypnosisVolumeText').textContent = hypnosisVolume + '%';
-            document.getElementById('ambianceVolumeText').textContent = ambianceVolume + '%';
-            
-            // Mise à jour du volume de l'audio principal
-            audioElement = document.getElementById('hypnosisAudio');
-            if (audioElement) {
-                audioElement.volume = hypnosisVolume / 100;
-            }
-            
-            // Mise à jour du volume de l'ambiance
-            ambianceGenerator.setVolume(ambianceVolume);
-        }
-
-        // Gestion du Wake Lock
-        async function toggleWakeLock() {
-            const wakeLockSwitch = document.getElementById('wakeLockSwitch');
-            
-            if ('wakeLock' in navigator) {
-                try {
-                    if (wakeLock) {
-                        await wakeLock.release();
-                        wakeLock = null;
-                        wakeLockSwitch.classList.remove('active');
-                    } else {
-                        wakeLock = await navigator.wakeLock.request('screen');
-                        wakeLockSwitch.classList.add('active');
-                    }
-                } catch (err) {
-                    console.error('Wake Lock error:', err);
-                }
-            } else {
-                alert('Wake Lock non supporté par ce navigateur');
-            }
-        }
 
         // Codes d'activation valides
         const validCodes = [
@@ -2042,34 +1394,6 @@
                     if (e.key === 'Enter') {
                         activateCard();
                     }
-                });
-            }
-
-            // Initialiser l'audio principal
-            audioElement = document.getElementById('hypnosisAudio');
-            if (audioElement) {
-                audioElement.addEventListener('play', () => {
-                    const statusIndicator = document.getElementById('statusIndicator');
-                    const statusText = document.getElementById('statusText');
-                    statusIndicator.classList.add('active');
-                    statusText.textContent = 'Lecture en cours';
-                    isAudioActive = true;
-                });
-
-                audioElement.addEventListener('pause', () => {
-                    const statusIndicator = document.getElementById('statusIndicator');
-                    const statusText = document.getElementById('statusText');
-                    statusIndicator.classList.remove('active');
-                    statusText.textContent = 'En pause';
-                    isAudioActive = false;
-                });
-
-                audioElement.addEventListener('ended', () => {
-                    const statusIndicator = document.getElementById('statusIndicator');
-                    const statusText = document.getElementById('statusText');
-                    statusIndicator.classList.remove('active');
-                    statusText.textContent = 'Séance terminée';
-                    isAudioActive = false;
                 });
             }
             
