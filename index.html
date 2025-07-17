@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>L'Étoile XVII • Tarot NFC • Innovation Brevetée</title>
     <meta name="robots" content="noindex, nofollow, noarchive, nosnippet">
-    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="icon" type="image/png" href="assets/logos/favicon.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
     <meta name="description" content="L'Étoile - Arcane XVII. Expérience immersive de tarot avec technologie NFC. Hypnose, guidance spirituelle et sagesse ancestrale.">
@@ -496,6 +496,55 @@
             border-color: var(--gold);
         }
 
+        /* Effet spécial pour la carte hypnose */
+        .nav-card-hypnose {
+            position: relative;
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            border: 2px solid transparent;
+            border-radius: 20px;
+            padding: 0;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            overflow: hidden;
+            box-shadow: var(--shadow-xl);
+        }
+
+        .nav-card-hypnose::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(45deg, var(--primary-purple), var(--secondary-purple), var(--gold), var(--primary-purple));
+            border-radius: 22px;
+            z-index: -1;
+            background-size: 300% 300%;
+            animation: gradientRotate 4s ease infinite;
+        }
+
+        .nav-card-hypnose::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+            transition: left 0.6s;
+            z-index: 1;
+        }
+
+        .nav-card-hypnose:hover::after {
+            left: 100%;
+        }
+
+        .nav-card-hypnose:hover {
+            transform: translateY(-12px) scale(1.05);
+            box-shadow: 0 30px 60px rgba(139, 92, 246, 0.3);
+        }
+
         .nav-btn {
             width: 100%;
             padding: 32px 24px;
@@ -511,6 +560,7 @@
             align-items: center;
             gap: 16px;
             position: relative;
+            z-index: 2;
         }
 
         .nav-icon {
@@ -1287,9 +1337,9 @@
                 </button>
             </div>
             
-            <div class="nav-card" onclick="showSection('hypnose')">
+            <div class="nav-card-hypnose" onclick="showSection('hypnose')">
                 <button class="nav-btn">
-                    <div class="nav-icon">🧘</div>
+                    <div class="nav-icon">🎧</div>
                     <div class="nav-text">
                         <div>Séance d'Hypnose</div>
                         <div class="nav-subtitle">Voyage vers l'harmonie intérieure</div>
@@ -2412,7 +2462,7 @@
             });
             
             // Event listeners pour navigation
-            document.querySelectorAll('.nav-card').forEach(card => {
+            document.querySelectorAll('.nav-card, .nav-card-hypnose').forEach(card => {
                 card.addEventListener('click', function() {
                     const buttonText = this.querySelector('.nav-text div').textContent.trim();
                     trackInteraction(`Navigation: ${buttonText}`);
@@ -2431,6 +2481,7 @@
             console.log('🌟 L\'Étoile - Arcane XVII - Site NFC initialisé avec succès');
             console.log('💫 Innovation brevetée FR2503190');
             console.log('✨ Système d\'activation sécurisé activé');
+            console.log('🎧 Carte hypnose avec effet spécial activée');
             
             // Tracking du chargement initial
             trackInteraction('Page: L\'Étoile Loaded', {
@@ -2473,3 +2524,4 @@
     </script>
 </body>
 </html>
+            '
