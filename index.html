@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>L'Étoile XVII • Tarot NFC • Innovation Brevetée</title>
     <meta name="robots" content="noindex, nofollow, noarchive, nosnippet">
-    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="icon" type="image/png" href="carte-etoile/assets/logos/favicon.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
     <meta name="description" content="L'Étoile - Arcane XVII. Expérience immersive de tarot avec technologie NFC. Hypnose, guidance spirituelle et sagesse ancestrale.">
@@ -352,6 +352,22 @@
             position: relative;
         }
 
+        .header-logo {
+            margin-bottom: 30px;
+        }
+
+        .main-logo {
+            max-width: 300px;
+            width: 100%;
+            height: auto;
+            filter: drop-shadow(0 10px 20px rgba(0,0,0,0.3));
+            transition: transform 0.3s ease;
+        }
+
+        .main-logo:hover {
+            transform: scale(1.05);
+        }
+
         .header-glow {
             position: absolute;
             top: 50%;
@@ -494,6 +510,34 @@
             transform: translateY(-8px) scale(1.02);
             box-shadow: 0 25px 50px rgba(139, 92, 246, 0.2);
             border-color: var(--gold);
+        }
+
+        /* Cartes en surbrillance pour hypnose et méditation */
+        .highlight-card {
+            position: relative;
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            border: 2px solid var(--glass-border);
+            box-shadow: var(--shadow-xl);
+        }
+
+        .highlight-card::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(45deg, var(--primary-purple), var(--secondary-purple), var(--gold), var(--primary-purple));
+            border-radius: 22px;
+            z-index: -1;
+            background-size: 300% 300%;
+            animation: gradientRotate 4s ease infinite;
+        }
+
+        .highlight-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 40px 80px -12px rgba(139, 92, 246, 0.3);
         }
 
         .nav-btn {
@@ -993,6 +1037,21 @@
             margin: 0 auto;
         }
 
+        .footer-logo-container {
+            margin-bottom: 20px;
+        }
+
+        .footer-logo-img {
+            max-width: 200px;
+            height: auto;
+            opacity: 0.8;
+            transition: opacity 0.3s ease;
+        }
+
+        .footer-logo-img:hover {
+            opacity: 1;
+        }
+
         .footer-logo {
             font-family: 'Playfair Display', serif;
             font-size: clamp(1.2rem, 3vw, 1.5rem);
@@ -1247,6 +1306,9 @@
         <!-- Header ultra-moderne -->
         <header>
             <div class="header-glow"></div>
+            <div class="header-logo">
+                <img src="carte-etoile/assets/logos/hypnotarot-logo.png" alt="HypnoTarot Logo" class="main-logo">
+            </div>
             <h1>⭐ L'ÉTOILE ⭐</h1>
             <p class="subtitle">Arcane Majeur XVII</p>
             <p class="tagline">Symbole d'Espérance & Harmonie Céleste</p>
@@ -1287,12 +1349,22 @@
                 </button>
             </div>
             
-            <div class="nav-card" onclick="showSection('hypnose')">
+            <div class="nav-card highlight-card" onclick="showSection('hypnose')">
                 <button class="nav-btn">
                     <div class="nav-icon">🧘</div>
                     <div class="nav-text">
                         <div>Séance d'Hypnose</div>
                         <div class="nav-subtitle">Voyage vers l'harmonie intérieure</div>
+                    </div>
+                </button>
+            </div>
+            
+            <div class="nav-card highlight-card" onclick="showSection('meditation')">
+                <button class="nav-btn">
+                    <div class="nav-icon">🕯️</div>
+                    <div class="nav-text">
+                        <div>Séance de Méditation</div>
+                        <div class="nav-subtitle">Détente et ouverture de l'esprit</div>
                     </div>
                 </button>
             </div>
@@ -1518,6 +1590,103 @@
             <p>Après cette expérience transformatrice, accordez-vous un retour en douceur à la réalité ordinaire. Buvez lentement un grand verre d'eau pure, bougez délicatement vos membres et prenez plusieurs respirations conscientes. Notez immédiatement vos ressentis, visions ou messages reçus dans un carnet dédié à votre évolution spirituelle. Cette pratique régulière amplifiera les bénéfices et créera un pont permanent vers votre guidance intérieure.</p>
         </section>
 
+        <!-- Section 3bis: Méditation -->
+        <section id="meditation" class="content-section scroll-reveal">
+            <div class="section-header">
+                <h2>Séance de Méditation de L'Étoile</h2>
+                <p class="section-subtitle">Méditation guidée pour la détente profonde et l'ouverture de l'esprit</p>
+            </div>
+            
+            <div class="audio-section">
+                <h3>🕯️ Immersion: "Lumière Stellaire Apaisante"</h3>
+                
+                <div class="audio-controls">
+                    <div class="audio-player">
+                        <audio controls preload="metadata" id="meditationAudio">
+                            <source src="carte-etoile/assets/etoile-meditation.mp3" type="audio/mpeg">
+                            Votre navigateur ne supporte pas cette expérience audio immersive.
+                        </audio>
+                    </div>
+                    
+                    <!-- Contrôles sons d'ambiance pour méditation -->
+                    <div class="ambient-controls">
+                        <h4>🌊 Sons d'Ambiance - Méditation</h4>
+                        <div class="ambient-selector">
+                            <select id="meditationAmbianceSelect" onchange="changeMeditationAmbiance()">
+                                <option value="none">Aucun son d'ambiance</option>
+                                <option value="nature">🌿 Sons de la Nature - Forêt enchantée et ruisseau</option>
+                                <option value="ocean">🌊 Vagues Océaniques - Ressac apaisant et profond</option>
+                                <option value="rain">🌧️ Pluie Douce - Gouttes relaxantes sur feuillage</option>
+                            </select>
+                        </div>
+                        
+                        <div class="ambient-description" id="meditationAmbientDescription">
+                            <p><em>Sélectionnez un son d'ambiance pour enrichir votre expérience méditative</em></p>
+                        </div>
+                        
+                        <div class="volume-controls">
+                            <div class="volume-control">
+                                <label>🎙️ Volume Méditation:</label>
+                                <input type="range" id="meditationVolume" min="0" max="100" value="80" onchange="updateMeditationVolumes()">
+                                <span id="meditationVolumeText">80%</span>
+                            </div>
+                            <div class="volume-control">
+                                <label>🌊 Volume Ambiance:</label>
+                                <input type="range" id="meditationAmbianceVolume" min="0" max="100" value="25" onchange="updateMeditationVolumes()">
+                                <span id="meditationAmbianceVolumeText">25%</span>
+                            </div>
+                        </div>
+                        
+                        <div class="ambient-status" id="meditationAmbientStatus">
+                            <span>🔇 Aucune ambiance sélectionnée</span>
+                        </div>
+                    </div>
+                    
+                    <div class="audio-status">
+                        <div class="status-indicator" id="meditationStatusIndicator"></div>
+                        <span id="meditationStatusText">Prêt pour l'écoute</span>
+                    </div>
+                </div>
+                
+                <div class="session-info">
+                    <h4>📋 Protocole de la Séance Méditative</h4>
+                    <p><strong>⏱️ Durée totale :</strong> 6 minutes de méditation pure</p>
+                    <p><strong>🎯 Thème central :</strong> Détente profonde, ouverture de l'esprit et connexion à la lumière stellaire</p>
+                    
+                    <h4>🎭 Objectifs Transformationnels :</h4>
+                    <ul>
+                        <li><strong>🌸 Détente totale :</strong> Relâchement complet des tensions physiques et mentales</li>
+                        <li><strong>🧠 Ouverture de l'esprit :</strong> Élargissement de la conscience et de la perception</li>
+                        <li><strong>✨ Clarté mentale :</strong> Apaisement du mental et amélioration de la concentration</li>
+                        <li><strong>🌟 Connexion stellaire :</strong> Harmonisation avec l'énergie cosmique de L'Étoile</li>
+                        <li><strong>💫 Éveil intérieur :</strong> Activation de l'intuition et de la sagesse intérieure</li>
+                    </ul>
+                    
+                    <h4>📚 Instructions Préparatoires :</h4>
+                    <ul>
+                        <li>🏡 Trouvez un espace calme et confortable</li>
+                        <li>🎧 Utilisez des écouteurs pour une immersion optimale</li>
+                        <li>🕯️ Allumez une bougie ou tamisez les lumières</li>
+                        <li>📱 Désactivez toutes les notifications</li>
+                        <li>🪑 Asseyez-vous confortablement ou allongez-vous</li>
+                        <li>👁️ Fermez les yeux et respirez naturellement</li>
+                    </ul>
+                </div>
+            </div>
+
+            <h3>🌸 Préparation à la Méditation</h3>
+            <ol>
+                <li><strong>Positionnement :</strong> Adoptez une posture stable et confortable</li>
+                <li><strong>Respiration :</strong> Prenez trois respirations profondes et conscientes</li>
+                <li><strong>Intention :</strong> Formulez votre intention de détente et d'ouverture</li>
+                <li><strong>Présence :</strong> Amenez votre attention au moment présent</li>
+                <li><strong>Réceptivité :</strong> Ouvrez-vous à l'expérience qui vient</li>
+            </ol>
+
+            <h3>🌅 Intégration Post-Méditation</h3>
+            <p>Après cette méditation apaisante, restez quelques instants en silence pour savourer la paix intérieure. Bougez délicatement vos doigts et orteils, étirez-vous doucement et rouvrez les yeux progressivement. Cette pratique régulière développera votre capacité naturelle à la détente et à l'ouverture d'esprit.</p>
+        </section>
+
         <!-- Section 4: Tirages -->
         <section id="tirages" class="content-section scroll-reveal">
             <div class="section-header">
@@ -1662,6 +1831,9 @@
         <!-- Footer moderne -->
         <footer class="scroll-reveal">
             <div class="footer-content">
+                <div class="footer-logo-container">
+                    <img src="carte-etoile/assets/logos/hypnotarot-compact.png" alt="HypnoTarot" class="footer-logo-img">
+                </div>
                 <div class="footer-logo">Tarot NFC Innovation</div>
                 <p class="footer-text">L'Étoile vous guide vers l'harmonie cosmique et l'éveil spirituel</p>
                 <p class="footer-text">Expérience mystique authentique • Technologie NFC révolutionnaire</p>
@@ -1727,19 +1899,15 @@
                 return { oscillator1, oscillator2, gain1, gain2 };
             }
 
-            // Générateur de bruit blanc amélioré (moins saccadé)
+            // Générateur de bruit blanc amélioré
             createWhiteNoise() {
-                const bufferSize = this.audioContext.sampleRate * 4; // Buffer plus long
+                const bufferSize = this.audioContext.sampleRate * 4;
                 const buffer = this.audioContext.createBuffer(2, bufferSize, this.audioContext.sampleRate);
                 
-                // Stéréo pour un meilleur rendu
                 for (let channel = 0; channel < 2; channel++) {
                     const output = buffer.getChannelData(channel);
                     for (let i = 0; i < bufferSize; i++) {
-                        // Algorithme Pink Noise plus doux
                         output[i] = (Math.random() * 2 - 1) * 0.3;
-                        
-                        // Lissage pour réduire les saccades
                         if (i > 0) {
                             output[i] = output[i] * 0.8 + output[i-1] * 0.2;
                         }
@@ -1750,7 +1918,6 @@
                 source.buffer = buffer;
                 source.loop = true;
                 
-                // Filtre passe-bas pour adoucir
                 const filter = this.audioContext.createBiquadFilter();
                 filter.type = 'lowpass';
                 filter.frequency.value = 8000;
@@ -1773,8 +1940,8 @@
                 const gain = this.audioContext.createGain();
                 const modulatorGain = this.audioContext.createGain();
                 
-                carrier.frequency.value = 110; // Note base
-                modulator.frequency.value = 7.83; // Fréquence Schumann
+                carrier.frequency.value = 110;
+                modulator.frequency.value = 7.83;
                 
                 carrier.type = 'sine';
                 modulator.type = 'sine';
@@ -1846,6 +2013,7 @@
 
         // Instance globale du générateur d'ambiance
         let ambianceGenerator = new AmbianceGenerator();
+        let meditationAmbianceGenerator = new AmbianceGenerator();
 
         // Contrôle des sons d'ambiance
         async function changeAmbiance() {
@@ -1919,6 +2087,76 @@
             
             // Tracking
             trackInteraction('Volume: Hypnosis=' + hypnosisVolume + '% Ambiance=' + ambianceVolume + '%');
+        }
+
+        // Contrôles spécifiques pour la méditation
+        async function changeMeditationAmbiance() {
+            const select = document.getElementById('meditationAmbianceSelect');
+            const status = document.getElementById('meditationAmbientStatus');
+            const description = document.getElementById('meditationAmbientDescription');
+            const selectedValue = select.value;
+            
+            // Descriptions pour les ambiances de méditation
+            const descriptions = {
+                'none': '<p><em>Sélectionnez un son d\'ambiance pour enrichir votre expérience méditative</em></p>',
+                'nature': '<p><strong>Sons de la Nature</strong><br>Chants d\'oiseaux, bruissement de feuilles et ruisseau cristallin créent une atmosphère naturelle apaisante pour votre méditation. Parfait pour se reconnecter à la terre.</p>',
+                'ocean': '<p><strong>Vagues Océaniques</strong><br>Le ressac rythmé des vagues sur le rivage induit naturellement un état de détente profonde et aide à synchroniser la respiration.</p>',
+                'rain': '<p><strong>Pluie Douce</strong><br>Le son délicat de la pluie tombant sur le feuillage crée une bulle de sérénité parfaite pour l\'introspection et la paix intérieure.</p>'
+            };
+            
+            if (description) {
+                description.innerHTML = descriptions[selectedValue] || descriptions['none'];
+            }
+            
+            if (selectedValue === 'none') {
+                meditationAmbianceGenerator.stopAmbiance();
+                status.innerHTML = '<span>🔇 Aucune ambiance sélectionnée</span>';
+                status.classList.remove('active');
+                trackInteraction('Meditation Ambiance: Disabled');
+                return;
+            }
+            
+            try {
+                await meditationAmbianceGenerator.startAmbiance('whitenoise');
+                
+                const ambianceNames = {
+                    'nature': '🌿 Sons de la nature - Forêt enchantée active',
+                    'ocean': '🌊 Vagues océaniques - Ressac apaisant',
+                    'rain': '🌧️ Pluie douce - Sérénité pluvieuse'
+                };
+                
+                status.innerHTML = `<span>${ambianceNames[selectedValue]}</span>`;
+                status.classList.add('active');
+                trackInteraction('Meditation Ambiance: ' + selectedValue);
+                
+            } catch (error) {
+                console.error('Erreur ambiance méditation:', error);
+                status.innerHTML = '<span>❌ Erreur lors du démarrage de l\'ambiance</span>';
+                status.classList.remove('active');
+            }
+        }
+
+        // Contrôle des volumes pour la méditation
+        function updateMeditationVolumes() {
+            const meditationVolume = document.getElementById('meditationVolume').value;
+            const meditationAmbianceVolume = document.getElementById('meditationAmbianceVolume').value;
+            
+            // Volume de l'audio principal
+            const meditationAudio = document.getElementById('meditationAudio');
+            if (meditationAudio) {
+                meditationAudio.volume = meditationVolume / 100;
+            }
+            
+            // Volume de l'ambiance
+            if (meditationAmbianceGenerator) {
+                meditationAmbianceGenerator.setVolume(meditationAmbianceVolume);
+            }
+            
+            // Mise à jour de l'affichage
+            document.getElementById('meditationVolumeText').textContent = meditationVolume + '%';
+            document.getElementById('meditationAmbianceVolumeText').textContent = meditationAmbianceVolume + '%';
+            
+            trackInteraction('Meditation Volume: Meditation=' + meditationVolume + '% Ambiance=' + meditationAmbianceVolume + '%');
         }
 
         const validCodes = [
@@ -2083,62 +2321,83 @@
         // Gestion avancée de l'audio avec Wake Lock API
         async function initAudioEnhancements() {
             audioElement = document.getElementById('hypnosisAudio');
+            const meditationAudioElement = document.getElementById('meditationAudio');
             const statusIndicator = document.getElementById('statusIndicator');
             const statusText = document.getElementById('statusText');
+            const meditationStatusIndicator = document.getElementById('meditationStatusIndicator');
+            const meditationStatusText = document.getElementById('meditationStatusText');
             
-            if (!audioElement) return;
+            if (!audioElement && !meditationAudioElement) return;
 
-            // Événements audio
-            audioElement.addEventListener('play', async () => {
-                isAudioActive = true;
-                statusIndicator.classList.add('active');
-                statusText.textContent = 'Séance en cours...';
-                
-                // Activer automatiquement le wake lock
-                await requestWakeLock();
-                
-                trackInteraction('Hypnosis Audio: Started');
-            });
+            // Événements audio hypnose
+            if (audioElement) {
+                audioElement.addEventListener('play', async () => {
+                    isAudioActive = true;
+                    statusIndicator.classList.add('active');
+                    statusText.textContent = 'Séance d\'hypnose en cours...';
+                    await requestWakeLock();
+                    trackInteraction('Hypnosis Audio: Started');
+                });
 
-            audioElement.addEventListener('pause', () => {
-                isAudioActive = false;
-                statusIndicator.classList.remove('active');
-                statusText.textContent = 'Séance en pause';
-                trackInteraction('Hypnosis Audio: Paused');
-            });
+                audioElement.addEventListener('pause', () => {
+                    isAudioActive = false;
+                    statusIndicator.classList.remove('active');
+                    statusText.textContent = 'Séance d\'hypnose en pause';
+                    trackInteraction('Hypnosis Audio: Paused');
+                });
 
-            audioElement.addEventListener('ended', async () => {
-                isAudioActive = false;
-                statusIndicator.classList.remove('active');
-                statusText.textContent = 'Séance terminée';
-                
-                // Relâcher le wake lock
-                await releaseWakeLock();
-                
-                trackInteraction('Hypnosis Audio: Completed');
-                
-                // Message de félicitations
-                setTimeout(() => {
-                    statusText.textContent = '🌟 Félicitations ! Expérience complétée';
-                }, 1000);
-            });
+                audioElement.addEventListener('ended', async () => {
+                    isAudioActive = false;
+                    statusIndicator.classList.remove('active');
+                    statusText.textContent = 'Séance d\'hypnose terminée';
+                    await releaseWakeLock();
+                    trackInteraction('Hypnosis Audio: Completed');
+                    setTimeout(() => {
+                        statusText.textContent = '🌟 Félicitations ! Expérience d\'hypnose complétée';
+                    }, 1000);
+                });
 
-            // Gestion des erreurs
-            audioElement.addEventListener('error', (e) => {
-                statusText.textContent = 'Erreur de lecture audio';
-                console.error('Audio error:', e);
-                trackInteraction('Hypnosis Audio: Error', { error: e.type });
-            });
+                audioElement.addEventListener('error', (e) => {
+                    statusText.textContent = 'Erreur de lecture audio hypnose';
+                    console.error('Hypnosis audio error:', e);
+                    trackInteraction('Hypnosis Audio: Error', { error: e.type });
+                });
+            }
 
-            // Suivi du progrès
-            audioElement.addEventListener('timeupdate', () => {
-                if (audioElement.duration) {
-                    const progress = Math.round((audioElement.currentTime / audioElement.duration) * 100);
-                    if (progress % 25 === 0 && progress > 0 && progress < 100) {
-                        trackInteraction(`Hypnosis Audio: ${progress}% Progress`);
-                    }
-                }
-            });
+            // Événements audio méditation
+            if (meditationAudioElement) {
+                meditationAudioElement.addEventListener('play', async () => {
+                    isAudioActive = true;
+                    meditationStatusIndicator.classList.add('active');
+                    meditationStatusText.textContent = 'Méditation en cours...';
+                    await requestWakeLock();
+                    trackInteraction('Meditation Audio: Started');
+                });
+
+                meditationAudioElement.addEventListener('pause', () => {
+                    isAudioActive = false;
+                    meditationStatusIndicator.classList.remove('active');
+                    meditationStatusText.textContent = 'Méditation en pause';
+                    trackInteraction('Meditation Audio: Paused');
+                });
+
+                meditationAudioElement.addEventListener('ended', async () => {
+                    isAudioActive = false;
+                    meditationStatusIndicator.classList.remove('active');
+                    meditationStatusText.textContent = 'Méditation terminée';
+                    await releaseWakeLock();
+                    trackInteraction('Meditation Audio: Completed');
+                    setTimeout(() => {
+                        meditationStatusText.textContent = '🌸 Félicitations ! Méditation complétée';
+                    }, 1000);
+                });
+
+                meditationAudioElement.addEventListener('error', (e) => {
+                    meditationStatusText.textContent = 'Erreur de lecture audio méditation';
+                    console.error('Meditation audio error:', e);
+                    trackInteraction('Meditation Audio: Error', { error: e.type });
+                });
+            }
         }
 
         // Gestion du Wake Lock (maintien d'écran allumé)
@@ -2187,7 +2446,6 @@
 
         // Fallback pour les navigateurs non compatibles
         function fallbackKeepScreenOn() {
-            // Technique alternative : vidéo invisible pour maintenir l'activité
             const video = document.createElement('video');
             video.src = 'data:video/mp4;base64,AAAAHGZ0eXBNUDQyAAACAEFNUDQxAAEAAQAAAQA=';
             video.muted = true;
@@ -2380,11 +2638,9 @@
         // Gestion de la visibilité de la page (pour l'audio)
         function handleVisibilityChange() {
             if (document.hidden && isAudioActive) {
-                // Page cachée pendant l'audio - maintenir l'activité
                 console.log('Page hidden during audio - maintaining activity');
                 trackInteraction('Audio: Page Hidden During Playback');
             } else if (!document.hidden && isAudioActive) {
-                // Page redevenue visible pendant l'audio
                 console.log('Page visible during audio');
                 trackInteraction('Audio: Page Visible During Playback');
             }
@@ -2394,14 +2650,12 @@
         document.addEventListener('DOMContentLoaded', function() {
             // Vérifier d'abord l'activation
             if (checkActivation()) {
-                // Déjà activé, commencer directement
                 createParticles();
                 initAudioEnhancements();
                 initEngagementTracking();
                 preloadAssets();
                 document.addEventListener('visibilitychange', handleVisibilityChange);
             } else {
-                // Pas encore activé, afficher l'écran d'activation
                 trackInteraction('Page: Activation Required');
             }
             
