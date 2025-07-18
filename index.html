@@ -1600,46 +1600,12 @@
             <div class="audio-section">
                 <h3>🕯️ Immersion: "Lumière Stellaire Apaisante"</h3>
                 
-                <div class="audio-controls">
+                                    <div class="audio-controls">
                     <div class="audio-player">
                         <audio controls preload="metadata" id="meditationAudio">
                             <source src="assets/etoile-meditation.mp3" type="audio/mpeg">
                             Votre navigateur ne supporte pas cette expérience audio immersive.
                         </audio>
-                    </div>
-                    
-                    <!-- Contrôles sons d'ambiance pour méditation -->
-                    <div class="ambient-controls">
-                        <h4>🌊 Sons d'Ambiance - Méditation</h4>
-                        <div class="ambient-selector">
-                            <select id="meditationAmbianceSelect" onchange="changeMeditationAmbiance()">
-                                <option value="none">Aucun son d'ambiance</option>
-                                <option value="nature">🌿 Sons de la Nature - Forêt enchantée et ruisseau</option>
-                                <option value="ocean">🌊 Vagues Océaniques - Ressac apaisant et profond</option>
-                                <option value="rain">🌧️ Pluie Douce - Gouttes relaxantes sur feuillage</option>
-                            </select>
-                        </div>
-                        
-                        <div class="ambient-description" id="meditationAmbientDescription">
-                            <p><em>Sélectionnez un son d'ambiance pour enrichir votre expérience méditative</em></p>
-                        </div>
-                        
-                        <div class="volume-controls">
-                            <div class="volume-control">
-                                <label>🎙️ Volume Méditation:</label>
-                                <input type="range" id="meditationVolume" min="0" max="100" value="80" onchange="updateMeditationVolumes()">
-                                <span id="meditationVolumeText">80%</span>
-                            </div>
-                            <div class="volume-control">
-                                <label>🌊 Volume Ambiance:</label>
-                                <input type="range" id="meditationAmbianceVolume" min="0" max="100" value="25" onchange="updateMeditationVolumes()">
-                                <span id="meditationAmbianceVolumeText">25%</span>
-                            </div>
-                        </div>
-                        
-                        <div class="ambient-status" id="meditationAmbientStatus">
-                            <span>🔇 Aucune ambiance sélectionnée</span>
-                        </div>
                     </div>
                     
                     <div class="audio-status">
@@ -2013,7 +1979,6 @@
 
         // Instance globale du générateur d'ambiance
         let ambianceGenerator = new AmbianceGenerator();
-        let meditationAmbianceGenerator = new AmbianceGenerator();
 
         // Contrôle des sons d'ambiance
         async function changeAmbiance() {
@@ -2087,76 +2052,6 @@
             
             // Tracking
             trackInteraction('Volume: Hypnosis=' + hypnosisVolume + '% Ambiance=' + ambianceVolume + '%');
-        }
-
-        // Contrôles spécifiques pour la méditation
-        async function changeMeditationAmbiance() {
-            const select = document.getElementById('meditationAmbianceSelect');
-            const status = document.getElementById('meditationAmbientStatus');
-            const description = document.getElementById('meditationAmbientDescription');
-            const selectedValue = select.value;
-            
-            // Descriptions pour les ambiances de méditation
-            const descriptions = {
-                'none': '<p><em>Sélectionnez un son d\'ambiance pour enrichir votre expérience méditative</em></p>',
-                'nature': '<p><strong>Sons de la Nature</strong><br>Chants d\'oiseaux, bruissement de feuilles et ruisseau cristallin créent une atmosphère naturelle apaisante pour votre méditation. Parfait pour se reconnecter à la terre.</p>',
-                'ocean': '<p><strong>Vagues Océaniques</strong><br>Le ressac rythmé des vagues sur le rivage induit naturellement un état de détente profonde et aide à synchroniser la respiration.</p>',
-                'rain': '<p><strong>Pluie Douce</strong><br>Le son délicat de la pluie tombant sur le feuillage crée une bulle de sérénité parfaite pour l\'introspection et la paix intérieure.</p>'
-            };
-            
-            if (description) {
-                description.innerHTML = descriptions[selectedValue] || descriptions['none'];
-            }
-            
-            if (selectedValue === 'none') {
-                meditationAmbianceGenerator.stopAmbiance();
-                status.innerHTML = '<span>🔇 Aucune ambiance sélectionnée</span>';
-                status.classList.remove('active');
-                trackInteraction('Meditation Ambiance: Disabled');
-                return;
-            }
-            
-            try {
-                await meditationAmbianceGenerator.startAmbiance('whitenoise');
-                
-                const ambianceNames = {
-                    'nature': '🌿 Sons de la nature - Forêt enchantée active',
-                    'ocean': '🌊 Vagues océaniques - Ressac apaisant',
-                    'rain': '🌧️ Pluie douce - Sérénité pluvieuse'
-                };
-                
-                status.innerHTML = `<span>${ambianceNames[selectedValue]}</span>`;
-                status.classList.add('active');
-                trackInteraction('Meditation Ambiance: ' + selectedValue);
-                
-            } catch (error) {
-                console.error('Erreur ambiance méditation:', error);
-                status.innerHTML = '<span>❌ Erreur lors du démarrage de l\'ambiance</span>';
-                status.classList.remove('active');
-            }
-        }
-
-        // Contrôle des volumes pour la méditation
-        function updateMeditationVolumes() {
-            const meditationVolume = document.getElementById('meditationVolume').value;
-            const meditationAmbianceVolume = document.getElementById('meditationAmbianceVolume').value;
-            
-            // Volume de l'audio principal
-            const meditationAudio = document.getElementById('meditationAudio');
-            if (meditationAudio) {
-                meditationAudio.volume = meditationVolume / 100;
-            }
-            
-            // Volume de l'ambiance
-            if (meditationAmbianceGenerator) {
-                meditationAmbianceGenerator.setVolume(meditationAmbianceVolume);
-            }
-            
-            // Mise à jour de l'affichage
-            document.getElementById('meditationVolumeText').textContent = meditationVolume + '%';
-            document.getElementById('meditationAmbianceVolumeText').textContent = meditationAmbianceVolume + '%';
-            
-            trackInteraction('Meditation Volume: Meditation=' + meditationVolume + '% Ambiance=' + meditationAmbianceVolume + '%');
         }
 
         const validCodes = [
@@ -2368,32 +2263,32 @@
             if (meditationAudioElement) {
                 meditationAudioElement.addEventListener('play', async () => {
                     isAudioActive = true;
-                    meditationStatusIndicator.classList.add('active');
-                    meditationStatusText.textContent = 'Méditation en cours...';
+                    if (meditationStatusIndicator) meditationStatusIndicator.classList.add('active');
+                    if (meditationStatusText) meditationStatusText.textContent = 'Méditation en cours...';
                     await requestWakeLock();
                     trackInteraction('Meditation Audio: Started');
                 });
 
                 meditationAudioElement.addEventListener('pause', () => {
                     isAudioActive = false;
-                    meditationStatusIndicator.classList.remove('active');
-                    meditationStatusText.textContent = 'Méditation en pause';
+                    if (meditationStatusIndicator) meditationStatusIndicator.classList.remove('active');
+                    if (meditationStatusText) meditationStatusText.textContent = 'Méditation en pause';
                     trackInteraction('Meditation Audio: Paused');
                 });
 
                 meditationAudioElement.addEventListener('ended', async () => {
                     isAudioActive = false;
-                    meditationStatusIndicator.classList.remove('active');
-                    meditationStatusText.textContent = 'Méditation terminée';
+                    if (meditationStatusIndicator) meditationStatusIndicator.classList.remove('active');
+                    if (meditationStatusText) meditationStatusText.textContent = 'Méditation terminée';
                     await releaseWakeLock();
                     trackInteraction('Meditation Audio: Completed');
                     setTimeout(() => {
-                        meditationStatusText.textContent = '🌸 Félicitations ! Méditation complétée';
+                        if (meditationStatusText) meditationStatusText.textContent = '🌸 Félicitations ! Méditation complétée';
                     }, 1000);
                 });
 
                 meditationAudioElement.addEventListener('error', (e) => {
-                    meditationStatusText.textContent = 'Erreur de lecture audio méditation';
+                    if (meditationStatusText) meditationStatusText.textContent = 'Erreur de lecture audio méditation';
                     console.error('Meditation audio error:', e);
                     trackInteraction('Meditation Audio: Error', { error: e.type });
                 });
