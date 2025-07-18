@@ -8,7 +8,7 @@
     <link rel="icon" type="image/png" href="assets/logos/favicon.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
-    <meta name="description" content="L'Étoile - Arcane XVII. Expérience immersive de tarot avec technologie NFC. Hypnose, méditation, guidance spirituelle et sagesse ancestrale.">
+    <meta name="description" content="L'Étoile - Arcane XVII. Expérience immersive de tarot avec technologie NFC. Hypnose, guidance spirituelle et sagesse ancestrale.">
     <style>
         :root {
             --primary-purple: #6366f1;
@@ -100,16 +100,6 @@
             z-index: -1;
             background-size: 300% 300%;
             animation: gradientRotate 4s ease infinite;
-        }
-
-        /* Logo dans l'activation - compact */
-        .activation-logo {
-            width: 120px;
-            height: 29px;
-            background: url('assets/logos/hypnotarot-compact.png') center/contain no-repeat;
-            margin: 0 auto 20px auto;
-            border-radius: 8px;
-            box-shadow: 0 10px 30px rgba(245, 158, 11, 0.3);
         }
 
         .activation-title {
@@ -242,22 +232,6 @@
             pointer-events: none;
         }
 
-        /* Logo dans l'intro - grand logo */
-        .intro-logo {
-            width: 280px;
-            height: 68px;
-            background: url('assets/logos/hypnotarot-logo.png') center/contain no-repeat;
-            margin-bottom: 20px;
-            border-radius: 12px;
-            box-shadow: 0 15px 40px rgba(245, 158, 11, 0.4);
-            animation: logoFloat 3s ease-in-out infinite;
-        }
-
-        @keyframes logoFloat {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-10px); }
-        }
-
         .intro-title {
             font-family: 'Playfair Display', serif;
             font-size: clamp(2rem, 6vw, 3.5rem);
@@ -312,7 +286,6 @@
             transition: all 0.3s ease;
             text-decoration: none;
             display: inline-block;
-            border: none;
         }
 
         .enter-btn:hover {
@@ -371,21 +344,12 @@
             50% { background-position: 100% 50%; }
         }
 
-        /* Header moderne avec logo */
+        /* Header moderne */
         header {
             text-align: center;
             margin-bottom: 60px;
             padding: 60px 0;
             position: relative;
-        }
-
-        .header-logo {
-            width: 200px;
-            height: 48px;
-            background: url('assets/logos/hypnotarot-logo.png') center/contain no-repeat;
-            margin: 0 auto 30px auto;
-            border-radius: 8px;
-            box-shadow: 0 15px 40px rgba(245, 158, 11, 0.3);
         }
 
         .header-glow {
@@ -722,18 +686,7 @@
             color: rgba(255, 255, 255, 0.9);
         }
 
-        .content-section ul {
-            padding-left: 20px;
-            margin-bottom: 20px;
-        }
-
-        .content-section li {
-            margin-bottom: 8px;
-            font-size: clamp(0.95rem, 2.2vw, 1.1rem);
-            line-height: 1.6;
-        }
-
-        /* Audio player AMÉLIORÉ avec sons d'ambiance - VERSION AVANCÉE */
+        /* Audio player AMÉLIORÉ avec sons d'ambiance */
         .audio-section {
             background: linear-gradient(135deg, rgba(139, 92, 246, 0.1), rgba(245, 158, 11, 0.1));
             border: 1px solid var(--glass-border);
@@ -981,15 +934,99 @@
 
         .session-info {
             background: var(--glass-bg);
-            backdrop-filter: blur(15px);
+            backdrop-filter: blur(10px);
             border: 1px solid var(--glass-border);
-            border-radius: 16px;
             padding: 24px;
-            margin-top: 20px;
+            border-radius: 16px;
+            margin-top: 24px;
             text-align: left;
         }
 
-        /* Footer moderne avec logo */
+        /* Cards and grids */
+        .combinations-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 24px;
+            margin: 32px 0;
+        }
+
+        .combination-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--glass-border);
+            padding: 24px;
+            border-radius: 16px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .combination-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 40px rgba(139, 92, 246, 0.15);
+        }
+
+        /* Spread examples */
+        .spread-example {
+            background: var(--glass-bg);
+            backdrop-filter: blur(15px);
+            border: 1px solid var(--glass-border);
+            padding: 32px;
+            border-radius: 20px;
+            margin: 24px 0;
+            position: relative;
+        }
+
+        .spread-visual {
+            font-family: 'Courier New', monospace;
+            font-size: clamp(0.9rem, 2vw, 1.1rem);
+            text-align: center;
+            margin: 24px 0;
+            color: var(--gold);
+            background: rgba(0,0,0,0.2);
+            padding: 20px;
+            border-radius: 12px;
+            overflow-x: auto;
+        }
+
+        /* Story section */
+        .story-content {
+            background: linear-gradient(135deg, rgba(139, 92, 246, 0.1), rgba(245, 158, 11, 0.05));
+            padding: 40px;
+            border-radius: 20px;
+            border-left: 4px solid var(--gold);
+            font-style: italic;
+            font-size: clamp(1rem, 2.2vw, 1.15rem);
+            line-height: 1.9;
+            position: relative;
+        }
+
+        .story-content::before {
+            content: '"';
+            font-size: 6rem;
+            color: var(--gold);
+            opacity: 0.3;
+            position: absolute;
+            top: 10px;
+            left: 20px;
+            font-family: serif;
+        }
+
+        /* Lists */
+        ul, ol {
+            padding-left: 24px;
+            margin: 20px 0;
+        }
+
+        li {
+            margin-bottom: 12px;
+            color: rgba(255, 255, 255, 0.9);
+            font-size: clamp(0.9rem, 2vw, 1rem);
+        }
+
+        li::marker {
+            color: var(--gold);
+        }
+
+        /* Footer moderne */
         footer {
             text-align: center;
             margin-top: 80px;
@@ -1004,15 +1041,6 @@
         .footer-content {
             max-width: 600px;
             margin: 0 auto;
-        }
-
-        .footer-logo-img {
-            width: 40px;
-            height: 40px;
-            background: url('assets/logos/favicon.png') center/contain no-repeat;
-            margin: 0 auto 20px auto;
-            border-radius: 50%;
-            box-shadow: 0 10px 25px rgba(245, 158, 11, 0.3);
         }
 
         .footer-logo {
@@ -1036,7 +1064,7 @@
             font-weight: 500;
         }
 
-        /* RESPONSIVE MOBILE */
+        /* RESPONSIVE MOBILE OPTIMISÉ */
         @media (max-width: 768px) {
             .container {
                 padding: 16px;
@@ -1047,6 +1075,14 @@
                 gap: 16px;
             }
             
+            .content-section {
+                margin-bottom: 32px;
+            }
+
+            .combinations-grid {
+                grid-template-columns: 1fr;
+            }
+
             .nav-btn {
                 padding: 24px 20px;
                 text-align: center;
@@ -1054,24 +1090,23 @@
                 gap: 12px;
             }
 
+            .spread-visual {
+                font-size: 0.85rem;
+                padding: 15px;
+            }
+
+            header {
+                padding: 40px 0;
+                margin-bottom: 40px;
+            }
+
+            .audio-section {
+                padding: 24px 16px;
+            }
+
             .activation-container {
                 padding: 32px 24px;
                 margin: 20px;
-            }
-
-            .intro-logo {
-                width: 240px;
-                height: 58px;
-            }
-
-            .header-logo {
-                width: 160px;
-                height: 39px;
-            }
-
-            .activation-logo {
-                width: 100px;
-                height: 24px;
             }
 
             .volume-control {
@@ -1100,6 +1135,66 @@
             }
         }
 
+        @media (max-width: 480px) {
+            .intro-title {
+                font-size: 2rem;
+            }
+
+            .enter-btn {
+                padding: 16px 32px;
+                font-size: 1rem;
+            }
+
+            .nav-icon {
+                width: 40px;
+                height: 40px;
+                font-size: 1.2rem;
+            }
+
+            .story-content {
+                padding: 24px 20px;
+            }
+
+            .story-content::before {
+                font-size: 4rem;
+                top: 5px;
+                left: 10px;
+            }
+
+            .activation-container {
+                padding: 24px 20px;
+            }
+
+            .code-input {
+                font-size: 1rem;
+                padding: 16px 20px;
+            }
+
+            .volume-control input[type="range"] {
+                height: 12px;
+            }
+
+            .volume-control input[type="range"]::-webkit-slider-thumb {
+                width: 26px;
+                height: 26px;
+            }
+        }
+
+        /* Optimisations tactiles */
+        @media (hover: none) and (pointer: coarse) {
+            .nav-card:hover {
+                transform: none;
+            }
+            
+            .video-container:hover {
+                transform: none;
+            }
+            
+            .combination-card:hover {
+                transform: none;
+            }
+        }
+
         /* Scroll animations */
         .scroll-reveal {
             opacity: 0;
@@ -1112,7 +1207,31 @@
             transform: translateY(0);
         }
 
-        /* Smooth scrolling */
+        /* Loading state */
+        .loading {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            padding: 24px;
+            color: var(--gold);
+        }
+
+        .spinner {
+            width: 24px;
+            height: 24px;
+            border: 2px solid rgba(245, 158, 11, 0.3);
+            border-top: 2px solid var(--gold);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Smooth scrolling and performance */
         html {
             scroll-behavior: smooth;
         }
@@ -1129,7 +1248,6 @@
     <!-- Page d'activation -->
     <div class="activation-screen" id="activationScreen">
         <div class="activation-container">
-            <div class="activation-logo"></div>
             <h1 class="activation-title">⭐ L'ÉTOILE ⭐</h1>
             <p class="activation-subtitle">Activez votre carte pour révéler votre destinée</p>
             
@@ -1160,7 +1278,6 @@
     
     <!-- Page d'accueil avec animation -->
     <div class="intro-screen" id="introScreen">
-        <div class="intro-logo"></div>
         <h1 class="intro-title">⭐ L'ÉTOILE ⭐</h1>
         <div class="intro-video-container">
             <video autoplay muted loop playsinline poster="assets/etoile-cover.jpg" id="introVideo">
@@ -1177,9 +1294,8 @@
     <div class="particles" id="particles"></div>
 
     <div class="container" id="mainContainer">
-        <!-- Header ultra-moderne avec logo -->
+        <!-- Header ultra-moderne -->
         <header>
-            <div class="header-logo"></div>
             <div class="header-glow"></div>
             <h1>⭐ L'ÉTOILE ⭐</h1>
             <p class="subtitle">Arcane Majeur XVII</p>
@@ -1231,16 +1347,6 @@
                 </button>
             </div>
             
-            <div class="nav-card-hypnose" onclick="showSection('meditation')">
-                <button class="nav-btn">
-                    <div class="nav-icon">🎧</div>
-                    <div class="nav-text">
-                        <div>Séance de Méditation</div>
-                        <div class="nav-subtitle">Connexion à l'essence stellaire</div>
-                    </div>
-                </button>
-            </div>
-            
             <div class="nav-card" onclick="showSection('tirages')">
                 <button class="nav-btn">
                     <div class="nav-icon">🃏</div>
@@ -1283,6 +1389,24 @@
                 <li><strong>L'eau pure cristalline :</strong> Symbolise la purification, la fécondité et le chemin vers la sagesse</li>
                 <li><strong>Les arbres de vie :</strong> Enracinement terrestre maintenant la connexion spirituelle</li>
             </ul>
+
+            <h3>Guide d'Utilisation Spirituelle</h3>
+            <h4>En Tirage Personnel :</h4>
+            <ul>
+                <li><strong>Méditation nocturne :</strong> Contemplez l'étoile pour vous connecter à l'espoir et aux possibilités nouvelles</li>
+                <li><strong>Rituel de purification :</strong> Utilisez cette carte pour nettoyer votre aura des énergies négatives</li>
+                <li><strong>Activation de l'intuition :</strong> Placez la carte sur votre troisième œil pendant la méditation</li>
+                <li><strong>Guidance féminine :</strong> Connectez-vous à votre essence féminine divine, quel que soit votre genre</li>
+            </ul>
+
+            <h4>Questions de Réflexion Profonde :</h4>
+            <ul>
+                <li>Quels sont mes rêves les plus authentiques et comment puis-je les manifester ?</li>
+                <li>Comment me reconnecter à mon essence pure et retrouver ma clarté intérieure ?</li>
+                <li>Où puis-je cultiver plus d'harmonie et d'équilibre dans ma vie actuelle ?</li>
+                <li>Comment maintenir l'espoir et la foi même dans les moments les plus sombres ?</li>
+                <li>Quelle guidance spirituelle cherche à s'exprimer à travers moi aujourd'hui ?</li>
+            </ul>
         </section>
 
         <!-- Section 2: Interprétations -->
@@ -1300,18 +1424,49 @@
             <h4>🌙 Lame Renversée - L'Obscurcissement :</h4>
             <p>Espoirs cruellement déçus, pessimisme envahissant, malchance persistante, déchéance physique et spirituelle. Désillusions profondes, malaises intimes non résolus, incertitude psychologique paralysante, malchance dans les entreprises, passivité excessive qui entrave le progrès, inaction face aux opportunités, erreurs graves d'évaluation des situations et des personnes.</p>
 
-            <h3>Combinaisons Fréquentes avec L'Étoile</h3>
-            <ul>
-                <li><strong>L'Étoile + La Mort :</strong> Grave maladie mais transformation spirituelle profonde</li>
-                <li><strong>L'Étoile + La Roue de Fortune :</strong> Le retour de la chance après une période difficile</li>
-                <li><strong>L'Étoile + Sept de Denier :</strong> Perte d'argent sans gravité, compensée par gains spirituels</li>
-                <li><strong>L'Étoile + L'Amoureux :</strong> Découverte du grand amour, union spirituelle</li>
-                <li><strong>L'Étoile + La Lune :</strong> Tromperie qui se conclut par une révélation libératrice</li>
-                <li><strong>L'Étoile + Le Soleil :</strong> Idéalisme récompensé et glorifié, succès éclatant</li>
-            </ul>
+            <h3>🔮 Combinaisons Mystiques Majeures</h3>
+            <div class="combinations-grid">
+                <div class="combination-card">
+                    <h4>⭐ + 💀 L'Étoile + La Mort</h4>
+                    <p><strong>Signification :</strong> Transformation profonde guidée par l'espoir. Maladie grave mais avec un potentiel de guérison miraculeuse et de renaissance spirituelle.</p>
+                </div>
+                <div class="combination-card">
+                    <h4>⭐ + 🎰 L'Étoile + Roue de Fortune</h4>
+                    <p><strong>Signification :</strong> Le destin sourit enfin. Période exceptionnellement favorable où la chance revient en force, guidée par la providence.</p>
+                </div>
+                <div class="combination-card">
+                    <h4>⭐ + 💰 L'Étoile + Sept de Denier</h4>
+                    <p><strong>Signification :</strong> Perte financière temporaire sans gravité excessive. L'argent reviendra par des voies inattendues et bénéfiques.</p>
+                </div>
+                <div class="combination-card">
+                    <h4>⭐ + 💕 L'Étoile + L'Amoureux</h4>
+                    <p><strong>Signification :</strong> Découverte du grand amour véritable et éternel. Relation bénie par les astres et destinée à durer.</p>
+                </div>
+                <div class="combination-card">
+                    <h4>⭐ + 🌙 L'Étoile + La Lune</h4>
+                    <p><strong>Signification :</strong> Illusion ou tromperie qui se révèle finalement et se conclut par une catharsis émotionnelle libératrice.</p>
+                </div>
+                <div class="combination-card">
+                    <h4>⭐ + ☀️ L'Étoile + Le Soleil</h4>
+                    <p><strong>Signification :</strong> Apothéose spirituelle. Idéalisme magnifiquement récompensé, glorification publique de vos valeurs et convictions.</p>
+                </div>
+            </div>
+
+            <h3>🌈 Applications par Domaine de Vie</h3>
+            <h4>💖 Amour & Relations :</h4>
+            <p>Rencontre romantique sous les meilleurs auspices, amour pur et sincère qui transcende le quotidien, relation harmonieuse équilibrée, période de séduction mutuelle intense, réconciliation après un malentendu.</p>
+
+            <h4>💼 Travail & Carrière :</h4>
+            <p>Créativité enfin reconnue et récompensée, succès dans les domaines artistiques ou spirituels, travail aligné avec vos valeurs profondes, reconnaissance publique de votre talent unique.</p>
+
+            <h4>🌿 Santé & Bien-être :</h4>
+            <p>Guérison naturelle et progressive, purification réussie de l'organisme, régénération cellulaire optimale, bien-être retrouvé par des méthodes douces, équilibre hormonal restauré.</p>
+
+            <h4>🔮 Spiritualité & Éveil :</h4>
+            <p>Éveil spirituel authentique et durable, méditation profonde et révélatrice, connexion directe avec la guidance divine, réception de messages célestes clairs, ouverture des facultés psychiques naturelles.</p>
         </section>
 
-        <!-- Section 3: Hypnose AVANCÉE -->
+        <!-- Section 3: Hypnose AMÉLIORÉE -->
         <section id="hypnose" class="content-section scroll-reveal">
             <div class="section-header">
                 <h2>Séance d'Hypnose de L'Étoile</h2>
@@ -1413,68 +1568,98 @@
             <p>Après cette expérience transformatrice, accordez-vous un retour en douceur à la réalité ordinaire. Buvez lentement un grand verre d'eau pure, bougez délicatement vos membres et prenez plusieurs respirations conscientes. Notez immédiatement vos ressentis, visions ou messages reçus dans un carnet dédié à votre évolution spirituelle. Cette pratique régulière amplifiera les bénéfices et créera un pont permanent vers votre guidance intérieure.</p>
         </section>
 
-        <!-- Section 4: Méditation -->
-        <section id="meditation" class="content-section scroll-reveal">
-            <div class="section-header">
-                <h2>Séance de Méditation de L'Étoile</h2>
-                <p class="section-subtitle">Connexion contemplative à l'essence stellaire et à la sagesse cosmique</p>
-            </div>
-            
-            <div class="audio-section">
-                <h3>🎧 Contemplation: "Dialogue avec l'Étoile Intérieure"</h3>
-                
-                <div class="audio-controls">
-                    <div class="audio-player">
-                        <audio controls preload="metadata" id="meditationAudio">
-                            <source src="assets/etoile-meditation.mp3" type="audio/mpeg">
-                            Votre navigateur ne supporte pas cette expérience audio contemplative.
-                        </audio>
-                    </div>
-                </div>
-                
-                <div class="session-info">
-                    <h4>📋 Protocole de la Séance Méditative</h4>
-                    <p><strong>⏱️ Durée totale :</strong> 6 minutes et 30 secondes de contemplation profonde</p>
-                    <p><strong>🎯 Thème central :</strong> Connexion à l'essence stellaire, développement de l'intuition et communion avec la sagesse universelle</p>
-                    <p><strong>🌟 Technique méditative :</strong> Méditation guidée associant visualisation des constellations, respiration cosmique et ancrage terrestre.</p>
-                    <p><strong>💫 Résultats espérés :</strong> Clarté mentale accrue, paix intérieure durable, éveil de la conscience supérieure, harmonisation des énergies.</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- Section 5: Tirages -->
+        <!-- Section 4: Tirages -->
         <section id="tirages" class="content-section scroll-reveal">
             <div class="section-header">
                 <h2>Méthodes de Tirage Étoilées</h2>
                 <p class="section-subtitle">Techniques de consultation sacrées utilisant la puissance de L'Étoile</p>
             </div>
             
-            <h3>⭐ Le Grand Tirage de l'Espoir Cosmique</h3>
-            <p>Une méthode puissante en sept cartes disposées selon la constellation de la Grande Ourse, révélant votre chemin de guidance spirituelle et vos potentiels cachés.</p>
-            
-            <h4>🔮 Positions des Cartes :</h4>
-            <ul>
-                <li><strong>Position 1 - L'Étoile Polaire :</strong> Votre guidance spirituelle actuelle</li>
-                <li><strong>Position 2 - L'Horizon Étoilé :</strong> Les opportunités qui s'offrent à vous</li>
-                <li><strong>Position 3 - La Constellation Cachée :</strong> Vos talents inexploités</li>
-                <li><strong>Position 4 - Le Rayon de Lumière :</strong> L'aide qui vous parvient</li>
-                <li><strong>Position 5 - L'Ombre Stellaire :</strong> Ce qu'il faut libérer</li>
-                <li><strong>Position 6 - La Voie Lactée :</strong> Votre chemin d'évolution</li>
-                <li><strong>Position 7 - L'Étoile Filante :</strong> La réalisation de vos souhaits</li>
-            </ul>
+            <h3>⭐ 1. Le Grand Tirage de l'Espoir Cosmique</h3>
+            <div class="spread-example">
+                <h4>🎯 Structure de la Croix Stellaire :</h4>
+                <div class="spread-visual">
+                    <p>           [2]</p>
+                    <p>           ↑</p>
+                    <p>   [1] ← [⭐] → [3]</p>
+                    <p>           ↓</p>
+                    <p>           [4]</p>
+                </div>
+                <p><strong>💫 Position Centrale (⭐) :</strong> L'Étoile - Votre espoir fondamental et votre guidance spirituelle actuelle</p>
+                <ul>
+                    <li><strong>🚫 Carte 1 (Ouest/Passé) :</strong> Ce qui freine ou limite actuellement votre espoir</li>
+                    <li><strong>🌟 Carte 2 (Nord/Spirituel) :</strong> Votre aspiration spirituelle la plus élevée</li>
+                    <li><strong>💚 Carte 3 (Est/Futur) :</strong> Ce qui nourrit et amplifie votre espoir</li>
+                    <li><strong>🌍 Carte 4 (Sud/Matériel) :</strong> Manifestation concrète de cet espoir dans votre réalité</li>
+                </ul>
+                <p><em>🕰️ Moment optimal :</em> Effectuez ce tirage pendant la nouvelle lune ou lors d'une nuit étoilée claire.</p>
+            </div>
 
-            <h3>🌟 Le Tirage de la Purification (3 cartes)</h3>
-            <p>Méthode simple mais efficace pour identifier les blocages énergétiques et trouver le chemin de la guérison spirituelle.</p>
-            
-            <h4>Structure du tirage :</h4>
+            <h3>🌌 2. La Constellation des Sept Étoiles Guides</h3>
+            <div class="spread-example">
+                <h4>✨ Disposition en Constellation Sacrée :</h4>
+                <div class="spread-visual">
+                    <p>      [2]     [3]     [4]</p>
+                    <p>        \     |     /</p>
+                    <p>  [1] ---- [⭐] ---- [5]</p>
+                    <p>        /     |     \</p>
+                    <p>      [7]     [6]</p>
+                </div>
+                <p><strong>💫 L'Étoile Centrale :</strong> Votre guidance spirituelle permanente, la lumière qui ne s'éteint jamais</p>
+                <p><strong>🌟 Les Sept Étoiles Compagnes :</strong></p>
+                <ul>
+                    <li><strong>Étoile 1 (Racines) :</strong> Votre héritage spirituel et les influences du passé</li>
+                    <li><strong>Étoile 2 (Rêves) :</strong> Vos aspirations les plus profondes et vos visions d'avenir</li>
+                    <li><strong>Étoile 3 (Créativité) :</strong> Votre potentiel créatif à exprimer et développer</li>
+                    <li><strong>Étoile 4 (Destinée) :</strong> Votre chemin de vie et votre mission spirituelle</li>
+                    <li><strong>Étoile 5 (Ressources) :</strong> Vos dons cachés et ressources intérieures méconnues</li>
+                    <li><strong>Étoile 6 (Action) :</strong> L'action concrète à entreprendre maintenant</li>
+                    <li><strong>Étoile 7 (Accomplissement) :</strong> Le résultat final et l'aboutissement de votre quête</li>
+                </ul>
+            </div>
+
+            <h3>🌊 3. Le Rituel de Purification Stellaire</h3>
+            <div class="spread-example">
+                <h4>💧 Séquence Linéaire de Transformation :</h4>
+                <div class="spread-visual">
+                    <p>[1] ━━━ [⭐] ━━━ [2] ━━━ [3]</p>
+                    <p>Passé  Centre  Purification  Avenir</p>
+                </div>
+                <ul>
+                    <li><strong>💔 Carte 1 (Libération) :</strong> Ce qu'il faut absolument purifier, abandonner ou transmuter</li>
+                    <li><strong>⭐ L'Étoile (Catalyseur) :</strong> L'énergie purificatrice qui opère la transformation</li>
+                    <li><strong>💎 Carte 2 (Renaissance) :</strong> L'énergie pure et nouvellement disponible à cultiver</li>
+                    <li><strong>🦋 Carte 3 (Manifestation) :</strong> Le renouveau et les opportunités qui vous attendent</li>
+                </ul>
+                <p><em>🔮 Conseil :</em> Effectuez ce tirage lors d'un bain rituel ou près d'une source d'eau naturelle.</p>
+            </div>
+
+            <h3>🧘 4. Méditation Contemplative avec L'Étoile</h3>
+            <div class="spread-example">
+                <h4>🕯️ Pratique Solitaire de Contemplation :</h4>
+                <p>Placez uniquement la carte de L'Étoile face à vous sur un tissu blanc ou doré. Allumez une bougie et méditez sur ces questions sacrées :</p>
+                <ul>
+                    <li><strong>💫 Question de l'Espoir :</strong> "Quels espoirs authentiques naissent en moi en contemplant cette étoile divine ?"</li>
+                    <li><strong>✨ Question de l'Incarnation :</strong> "Comment puis-je incarner la pureté et l'harmonie de L'Étoile dans ma vie quotidienne ?"</li>
+                    <li><strong>📡 Question de la Guidance :</strong> "Quel message spirituel urgent cherche à me parvenir aujourd'hui ?"</li>
+                    <li><strong>🌊 Question de la Purification :</strong> "Quels aspects de ma vie actuelle ont besoin d'être purifiés et harmonisés ?"</li>
+                    <li><strong>🎨 Question de la Créativité :</strong> "Comment mon potentiel créatif veut-il s'exprimer à travers moi ?"</li>
+                </ul>
+                <p><em>⏰ Durée recommandée :</em> 15 à 30 minutes de contemplation silencieuse.</p>
+            </div>
+
+            <h3>🌙 Conseils pour Optimiser Vos Tirages</h3>
             <ul>
-                <li><strong>Carte 1 - Ce qui doit être purifié :</strong> Les énergies stagnantes à libérer</li>
-                <li><strong>Carte 2 - L'eau de purification :</strong> Les moyens de transformation</li>
-                <li><strong>Carte 3 - L'étoile renouvelée :</strong> L'état d'harmonie à atteindre</li>
+                <li><strong>🌌 Timing cosmique :</strong> Privilégiez les soirées claires avec une belle visibilité des étoiles</li>
+                <li><strong>🕯️ Ambiance sacrée :</strong> Créez une atmosphère pure avec bougies blanches ou dorées et encens de santal</li>
+                <li><strong>💎 État de conscience :</strong> Formulez vos questions avec bienveillance, ouverture et humilité spirituelle</li>
+                <li><strong>🎭 Réceptivité totale :</strong> Prenez tout le temps nécessaire pour ressentir profondément l'énergie de chaque carte</li>
+                <li><strong>📖 Documentation sacrée :</strong> Consignez toutes vos interprétations dans un grimoire dédié à votre évolution</li>
+                <li><strong>🔄 Régularité :</strong> Répétez ces pratiques lors de chaque cycle lunaire pour créer une connexion permanente</li>
             </ul>
         </section>
 
-        <!-- Section 6: Métaphore -->
+        <!-- Section 5: Métaphore -->
         <section id="metaphore" class="content-section scroll-reveal">
             <div class="section-header">
                 <h2>La Métaphore Éternelle de L'Étoile</h2>
@@ -1482,37 +1667,52 @@
             </div>
             
             <h3>✨ L'Épopée de Céleste, la Puiseuse d'Étoiles ✨</h3>
-            
-            <p>Il était une fois, dans un royaume englouti par une obscurité séculaire, une jeune femme d'une beauté surnaturelle nommée Céleste. Ses cheveux dorés captaient les derniers rayons de lumière céleste, et ses yeux reflétaient la sagesse des anciennes civilisations perdues.</p>
+            <div class="story-content">
+                <p>Il était une fois, dans un royaume englouti par une obscurité séculaire, une jeune femme d'une beauté surnaturelle nommée Céleste. Tandis que tous les habitants de son village gardaient les yeux rivés au sol, rongés par la peur et le découragement, elle avait mystérieusement conservé l'habitude sacrée de contempler la voûte céleste.</p>
 
-            <p>Depuis des années, le royaume languissait sous un voile de tristesse et de désespoir. Les récoltes avaient cessé de pousser, les rivières s'étaient taries, et les habitants avaient perdu foi en l'avenir. Les sages avaient prédit qu'seule une âme pure pourrait restaurer l'harmonie entre le ciel et la terre.</p>
+                <p>Chaque nuit, quand le monde sombrait dans le désespoir, Céleste se rendait en pèlerinage près du lac sacré de Miralis, dont les eaux cristallines reflétaient parfaitement l'immensité cosmique. Là, agenouillée au bord de cette eau bénie, elle accomplissait un rituel ancestral que sa grand-mère lui avait transmis en secret : avec ses deux amphores d'argent céleste, elle puisait délicatement l'eau du lac pour la reverser avec une grâce infinie, créant des cercles de lumière dorée qui dansaient à la surface.</p>
 
-            <h4>🌟 La Révélation Nocturne</h4>
-            <p>Une nuit, guidée par un rêve prophétique, Céleste se dirigea vers la source sacrée au cœur de la forêt étoilée. Là, sous un ciel parsemé de sept étoiles brillantes disposées autour d'une huitième étoile centrale aux seize branches, elle reçut une vision divine.</p>
+                <p>Les villageois, prisonniers de leur vision étriquée, la prenaient pour une illuminée. "Pourquoi perdre ton temps avec ces gestes inutiles ?" lui criaient-ils avec amertume. "L'eau du lac retourne toujours au lac. Tu ne changes rien à notre destinée !" Mais leurs moqueries ne pouvaient entamer sa foi inébranlable.</p>
 
-            <p>Les déesses des eaux lui apparurent et lui confièrent deux amphores magiques : l'une contenait l'eau de la purification terrestre, l'autre l'essence de la sagesse céleste. "Ton cœur pur et tes intentions désintéressées font de toi la gardienne de l'équilibre cosmique", lui dirent-elles.</p>
+                <p>Car Céleste détenait une sagesse millénaire que leurs cœurs fermés ne pouvaient comprendre. Chaque geste qu'elle accomplissait sous le manteau étoilé était un acte de foi pure, un pont sacré entre les dimensions. En versant l'eau sous les étoiles, elle purifiait non seulement les eaux du lac, mais transmutait l'énergie de tout le royaume. Elle était devenue un canal vivant entre la sagesse céleste et la terre meurtrie, permettant à la lumière divine de descendre et de nourrir secrètement le monde terrestre.</p>
 
-            <h4>💧 Le Rituel de Régénération</h4>
-            <p>Céleste comprit sa mission. Elle devait verser l'eau sacrée selon un rituel ancien : une main dirigée vers la terre pour nourrir et purifier, l'autre vers les cieux pour maintenir la connexion divine. Ce geste symbolique rétablirait le flux énergétique entre les deux mondes.</p>
+                <p>Une nuit particulièrement sombre, où même les étoiles semblaient avoir déserté le ciel et où le désespoir atteignait son paroxysme, Céleste continua son rituel malgré les quolibets et les pierres que lui lançaient les villageois. Soudain, un miracle se produisit : une étoile gigantesque d'un éclat surnaturel apparut au-dessus d'elle, suivie majestueusement de six autres étoiles plus petites qui formèrent une constellation parfaite. La lumière était si intense et si pure qu'elle illumina instantanément tout le royaume, chassant l'obscurité millénaire.</p>
 
-            <p>Agenouillée au bord de la source, dans sa nudité symbolisant la pureté absolue de l'âme, elle commença le rituel sous le regard bienveillant des étoiles. Chaque goutte d'eau versée ravivait l'espoir dans le cœur des habitants, chaque geste gracieux harmonisait les énergies cosmiques.</p>
+                <p>À partir de cette nuit bénie, la transformation fut totale et miraculeuse : les récoltes redevinrent luxuriantes, les maladies disparurent comme par enchantement, l'eau des puits redevint pure, et surtout, l'espoir renaît dans le cœur des habitants comme une flamme éternelle. Ils comprirent alors, dans un éclair de conscience collective, que Céleste, par sa pureté absolue et sa persévérance héroïque, avait maintenu vivant le lien sacré entre leur monde et la guidance cosmique.</p>
 
-            <h4>🌈 La Renaissance du Royaume</h4>
-            <p>Peu à peu, la magie opéra. Les sources se remirent à couler, les jardins refleurirent, et une lumière douce et dorée enveloppa le royaume. Mais plus important encore, l'espoir renaissait dans les cœurs. Les habitants retrouvèrent leur capacité à rêver, à créer, à aimer.</p>
+                <p>Depuis cette révélation, la légende raconte que chaque fois qu'une âme traverse une période d'obscurité profonde, il lui suffit de lever les yeux vers les étoiles et de se rappeler l'histoire de Céleste pour retrouver instantanément l'espoir, la force et la certitude que la lumière finit toujours par triompher des ténèbres.</p>
+            </div>
 
-            <p>Céleste était devenue L'Étoile, symbole éternel d'espérance et de renouveau. Son histoire nous enseigne que même dans les moments les plus sombres, il existe toujours une lumière intérieure capable de transformer notre réalité et celle de notre entourage.</p>
+            <h3>🔮 Décryptage Symbolique de la Métaphore</h3>
+            <ul>
+                <li><strong>✨ Céleste représente</strong> votre âme pure et votre essence divine qui maintient la foi malgré toutes les adversités</li>
+                <li><strong>🌊 Le lac sacré Miralis symbolise</strong> votre inconscient profond et le réservoir infini de votre intuition</li>
+                <li><strong>🏺 Les amphores d'argent céleste représentent</strong> votre capacité innée à recevoir l'amour divin et à le redistribuer généreusement</li>
+                <li><strong>🌙 Le rituel nocturne symbolise</strong> l'importance cruciale de maintenir une pratique spirituelle régulière et sacrée</li>
+                <li><strong>⭐ Les sept étoiles guides représentent</strong> la réponse divine et la guidance cosmique qui répond toujours à une foi authentique</li>
+                <li><strong>🏰 La purification du royaume symbolise</strong> comment votre transformation personnelle influence mystérieusement tout votre environnement</li>
+                <li><strong>👥 Les villageois représentent</strong> les parts de vous-même ou les personnes de votre entourage qui résistent encore au changement</li>
+            </ul>
 
-            <h4>🔮 L'Enseignement Spirituel</h4>
-            <p>Cette métaphore révèle les mystères profonds de L'Étoile : nous portons tous en nous cette capacité de purification et de régénération. Comme Céleste, nous pouvons devenir des canaux entre le divin et le terrestre, des gardiens de l'espoir pour nous-mêmes et pour autrui.</p>
+            <h3>🌟 Application Transformatrice dans Votre Vie</h3>
+            <p>À l'image de Céleste, vous êtes invité(e) à incarner ces qualités sacrées :</p>
+            <ul>
+                <li><strong>🕯️ Maintenir votre flamme intérieure :</strong> Gardez vivante votre foi et votre espoir même quand tout semble perdu autour de vous</li>
+                <li><strong>🌊 Pratiquer des gestes de beauté :</strong> Intégrez quotidiennement des rituels de purification et d'harmonisation énergétique</li>
+                <li><strong>👁️ Faire confiance à votre guidance :</strong> Développez et suivez votre intuition feminine sacrée, indépendamment de votre genre</li>
+                <li><strong>🌉 Servir de pont spirituel :</strong> Devenez un canal conscient entre vos aspirations les plus élevées et votre réalité quotidienne</li>
+                <li><strong>💎 Persévérer dans la pureté :</strong> Maintenez vos pratiques spirituelles malgré l'incompréhension ou les critiques de l'entourage</li>
+                <li><strong>🌍 Croire en votre impact :</strong> Ayez la certitude profonde que votre transformation personnelle contribue puissamment au bien collectif et à l'élévation de la conscience planétaire</li>
+            </ul>
 
-            <p>L'Étoile nous rappelle que la vraie beauté réside dans la pureté d'intention, que la vraie force naît de la vulnérabilité acceptée, et que la vraie magie émerge de notre capacité à faire confiance aux mystères de l'univers.</p>
+            <h3>🎭 Exercice d'Intégration : Devenir Céleste</h3>
+            <p>Pour intégrer pleinement cette métaphore dans votre quotidien, créez votre propre rituel inspiré de Céleste. Chaque soir, près d'un point d'eau (même un simple verre), versez délicatement l'eau en visualisant que vous purifiez votre journée et en formulant une intention d'espoir pour demain. Ce geste simple mais sacré vous connectera progressivement à la fréquence de L'Étoile et attirera sa guidance dans votre existence.</p>
         </section>
 
-        <!-- Footer moderne avec logo -->
+        <!-- Footer moderne -->
         <footer class="scroll-reveal">
             <div class="footer-content">
-                <div class="footer-logo-img"></div>
-                <div class="footer-logo">HypnoTarot</div>
+                <div class="footer-logo">Tarot NFC Innovation</div>
                 <p class="footer-text">L'Étoile vous guide vers l'harmonie cosmique et l'éveil spirituel</p>
                 <p class="footer-text">Expérience mystique authentique • Technologie NFC révolutionnaire</p>
                 <p class="patent-info">🛡️ Innovation Brevetée FR2503190 • 2025</p>
@@ -1706,291 +1906,70 @@
             
             // Descriptions détaillées pour chaque ambiance
             const descriptions = {
-                none: '<p><em>Sélectionnez un son d\'ambiance pour enrichir votre expérience hypnotique</em></p>',
-                binaural: '<p><strong>Fréquences Binaurales Thêta (6Hz)</strong><br><em>Ces ondes cérébrales favorisent un état de relaxation profonde et de créativité. Parfait pour la méditation et l\'induction hypnotique.</em></p>',
-                schumann: '<p><strong>Résonance de Schumann (7.83Hz)</strong><br><em>Fréquence naturelle de la Terre qui harmonise le système nerveux et favorise l\'équilibre énergétique.</em></p>',
-                whitenoise: '<p><strong>Bruit Blanc Premium</strong><br><em>Masque les bruits extérieurs et crée un cocon sonore optimal pour l\'immersion totale.</em></p>'
+                'none': '<p><em>Sélectionnez un son d\'ambiance pour enrichir votre expérience hypnotique</em></p>',
+                'binaural': '<p><strong>Fréquences Binaurales Thêta (6Hz)</strong><br>Ces ondes favorisent l\'état hypnotique profond en synchronisant vos ondes cérébrales avec la fréquence thêta, idéale pour la méditation, la créativité et l\'accès aux souvenirs. <em>Utilisez des écouteurs pour un effet optimal.</em></p>',
+                'schumann': '<p><strong>Résonance de Schumann (7.83Hz)</strong><br>Fréquence électromagnétique naturelle de la Terre, appelée "battement de cœur de Gaïa". Cette vibration harmonise votre champ bioélectrique avec celui de la planète pour un ancrage profond.</p>',
+                'whitenoise': '<p><strong>Bruit Blanc Premium</strong><br>Masque acoustique parfait qui isole des bruits extérieurs et crée une bulle de silence relatif. Favorise la concentration pure sur la voix hypnotique et l\'état de transe.</p>'
             };
-
-            description.innerHTML = descriptions[selectedValue] || descriptions.none;
-
+            
+            // Mettre à jour la description
+            if (description) {
+                description.innerHTML = descriptions[selectedValue] || descriptions['none'];
+            }
+            
             if (selectedValue === 'none') {
                 ambianceGenerator.stopAmbiance();
                 status.innerHTML = '<span>🔇 Aucune ambiance sélectionnée</span>';
                 status.classList.remove('active');
-            } else {
-                try {
-                    await ambianceGenerator.startAmbiance(selectedValue);
-                    status.innerHTML = `<span>🎵 Ambiance active : ${select.options[select.selectedIndex].text}</span>`;
-                    status.classList.add('active');
-                } catch (error) {
-                    console.error('Erreur lors du démarrage de l\'ambiance:', error);
-                    status.innerHTML = '<span>❌ Erreur de chargement</span>';
-                    status.classList.remove('active');
-                }
+                trackInteraction('Ambiance: Disabled');
+                return;
+            }
+            
+            try {
+                await ambianceGenerator.startAmbiance(selectedValue);
+                
+                const ambianceNames = {
+                    'binaural': '🧠 Fréquences Binaurales actives - Induction thêta 6Hz',
+                    'schumann': '⚡ Résonance Schumann - Harmonisation planétaire',
+                    'whitenoise': '🔇 Bruit blanc premium - Isolation acoustique totale'
+                };
+                
+                status.innerHTML = `<span>${ambianceNames[selectedValue]}</span>`;
+                status.classList.add('active');
+                trackInteraction('Ambiance: ' + selectedValue);
+                
+                console.log('Ambiance démarrée:', selectedValue);
+                
+            } catch (error) {
+                console.error('Erreur ambiance:', error);
+                status.innerHTML = '<span>❌ Erreur lors du démarrage de l\'ambiance</span>';
+                status.classList.remove('active');
+                description.innerHTML = '<p><em>Erreur technique. Rechargez la page et réessayez.</em></p>';
             }
         }
 
-        // Gestion des volumes
+        // Contrôle des volumes
         function updateVolumes() {
             const hypnosisVolume = document.getElementById('hypnosisVolume').value;
             const ambianceVolume = document.getElementById('ambianceVolume').value;
             
-            document.getElementById('hypnosisVolumeText').textContent = hypnosisVolume + '%';
-            document.getElementById('ambianceVolumeText').textContent = ambianceVolume + '%';
-            
-            // Mise à jour du volume de l'audio principal
-            audioElement = document.getElementById('hypnosisAudio');
+            // Volume de l'audio principal
             if (audioElement) {
                 audioElement.volume = hypnosisVolume / 100;
             }
             
-            // Mise à jour du volume de l'ambiance
-            ambianceGenerator.setVolume(ambianceVolume);
-        }
-
-        // Gestion du Wake Lock
-        async function toggleWakeLock() {
-            const wakeLockSwitch = document.getElementById('wakeLockSwitch');
-            
-            if ('wakeLock' in navigator) {
-                try {
-                    if (wakeLock) {
-                        await wakeLock.release();
-                        wakeLock = null;
-                        wakeLockSwitch.classList.remove('active');
-                    } else {
-                        wakeLock = await navigator.wakeLock.request('screen');
-                        wakeLockSwitch.classList.add('active');
-                    }
-                } catch (err) {
-                    console.error('Wake Lock error:', err);
-                }
-            } else {
-                alert('Wake Lock non supporté par ce navigateur');
+            // Volume de l'ambiance
+            if (ambianceGenerator) {
+                ambianceGenerator.setVolume(ambianceVolume);
             }
+            
+            // Mise à jour de l'affichage
+            document.getElementById('hypnosisVolumeText').textContent = hypnosisVolume + '%';
+            document.getElementById('ambianceVolumeText').textContent = ambianceVolume + '%';
+            
+            // Tracking
+            trackInteraction('Volume: Hypnosis=' + hypnosisVolume + '% Ambiance=' + ambianceVolume + '%');
         }
 
-        // Codes d'activation valides
         const validCodes = [
-            'ETOILE-2025', 'XK7M-9P2W', 'Q3W8-R5T1', 'M8N3-B7V2', 'Z9X4-C8Q5',
-            'A1B2-C3D4', 'E5F6-G7H8', 'I9J0-K1L2', 'M3N4-O5P6', 'Q7R8-S9T0',
-            'TEST-1234', 'DEMO-5678', 'STAR-XXXX'
-        ];
-
-        // Vérification de l'activation au chargement
-        function checkActivation() {
-            const activated = localStorage.getItem('etoile_activated');
-            if (activated === 'true') {
-                isActivated = true;
-                hideActivationScreen();
-                return true;
-            }
-            return false;
-        }
-
-        // Fonction d'activation
-        function activateCard() {
-            const codeInput = document.getElementById('activationCode');
-            const errorMessage = document.getElementById('errorMessage');
-            const successMessage = document.getElementById('successMessage');
-            const activateBtn = document.querySelector('.activate-btn');
-            
-            const inputCode = codeInput.value.trim().toUpperCase();
-            
-            // Reset messages
-            errorMessage.style.display = 'none';
-            successMessage.style.display = 'none';
-            
-            // Validation
-            if (!inputCode) {
-                showError('Veuillez entrer votre code d\'activation');
-                return;
-            }
-            
-            // Désactiver le bouton pendant la vérification
-            activateBtn.disabled = true;
-            activateBtn.textContent = '🔍 Vérification...';
-            
-            // Simulation d'une vérification
-            setTimeout(() => {
-                if (validCodes.includes(inputCode)) {
-                    // Activation réussie
-                    localStorage.setItem('etoile_activated', 'true');
-                    localStorage.setItem('etoile_activation_date', new Date().toISOString());
-                    
-                    // Afficher succès
-                    successMessage.textContent = '✨ Activation réussie ! Accès à votre expérience mystique...';
-                    successMessage.style.display = 'block';
-                    
-                    // Transition vers l'intro après 2 secondes
-                    setTimeout(() => {
-                        isActivated = true;
-                        hideActivationScreen();
-                    }, 2000);
-                    
-                } else {
-                    // Code invalide
-                    showError('Code d\'activation invalide. Vérifiez votre carte physique.');
-                    
-                    // Réactiver le bouton
-                    activateBtn.disabled = false;
-                    activateBtn.textContent = '✨ Activer ma Carte ✨';
-                }
-            }, 1500);
-        }
-
-        function showError(message) {
-            const errorMessage = document.getElementById('errorMessage');
-            errorMessage.textContent = message;
-            errorMessage.style.display = 'block';
-        }
-
-        function hideActivationScreen() {
-            const activationScreen = document.getElementById('activationScreen');
-            activationScreen.classList.add('hidden');
-        }
-
-        // Fonction d'entrée dans le site
-        function enterSite() {
-            const introScreen = document.getElementById('introScreen');
-            const mainContainer = document.getElementById('mainContainer');
-            
-            // Masquer l'écran d'intro
-            introScreen.classList.add('hidden');
-            
-            // Afficher le contenu principal après transition
-            setTimeout(() => {
-                mainContainer.classList.add('visible');
-                initScrollReveal();
-                createParticles();
-            }, 500);
-        }
-
-        // Navigation entre sections
-        function showSection(sectionId) {
-            // Masquer toutes les sections
-            const sections = document.querySelectorAll('.content-section');
-            sections.forEach(section => {
-                section.classList.remove('active');
-            });
-            
-            // Afficher la section demandée
-            const targetSection = document.getElementById(sectionId);
-            if (targetSection) {
-                setTimeout(() => {
-                    targetSection.classList.add('active');
-                }, 100);
-                
-                // Scroll fluide vers la section
-                setTimeout(() => {
-                    const yOffset = -20;
-                    const y = targetSection.getBoundingClientRect().top + window.pageYOffset + yOffset;
-                    window.scrollTo({
-                        top: y,
-                        behavior: 'smooth'
-                    });
-                }, 200);
-            }
-        }
-
-        // Création des particules flottantes
-        function createParticles() {
-            const particlesContainer = document.getElementById('particles');
-            const particleCount = 50;
-            
-            for (let i = 0; i < particleCount; i++) {
-                const particle = document.createElement('div');
-                particle.className = 'particle';
-                particle.style.left = Math.random() * 100 + '%';
-                particle.style.top = Math.random() * 100 + '%';
-                particle.style.animationDelay = Math.random() * 6 + 's';
-                particle.style.animationDuration = (3 + Math.random() * 3) + 's';
-                particlesContainer.appendChild(particle);
-            }
-        }
-
-        // Animations de révélation au scroll
-        function initScrollReveal() {
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('revealed');
-                    }
-                });
-            }, {
-                threshold: 0.1,
-                rootMargin: '0px 0px -50px 0px'
-            });
-
-            document.querySelectorAll('.scroll-reveal').forEach(el => {
-                observer.observe(el);
-            });
-        }
-
-        // Auto-formatage du code d'activation
-        document.addEventListener('DOMContentLoaded', function() {
-            // Vérifier d'abord l'activation
-            if (checkActivation()) {
-                // Déjà activé, masquer l'écran d'activation
-                createParticles();
-            }
-            
-            const codeInput = document.getElementById('activationCode');
-            if (codeInput) {
-                codeInput.addEventListener('input', function(e) {
-                    let value = e.target.value.replace(/[^A-Z0-9]/g, '').toUpperCase();
-                    
-                    // Auto-format avec tiret après 4 caractères
-                    if (value.length > 4) {
-                        value = value.substring(0, 4) + '-' + value.substring(4, 8);
-                    }
-                    
-                    e.target.value = value;
-                });
-                
-                // Activation avec Enter
-                codeInput.addEventListener('keypress', function(e) {
-                    if (e.key === 'Enter') {
-                        activateCard();
-                    }
-                });
-            }
-
-            // Initialiser l'audio principal
-            audioElement = document.getElementById('hypnosisAudio');
-            if (audioElement) {
-                audioElement.addEventListener('play', () => {
-                    const statusIndicator = document.getElementById('statusIndicator');
-                    const statusText = document.getElementById('statusText');
-                    statusIndicator.classList.add('active');
-                    statusText.textContent = 'Lecture en cours';
-                    isAudioActive = true;
-                });
-
-                audioElement.addEventListener('pause', () => {
-                    const statusIndicator = document.getElementById('statusIndicator');
-                    const statusText = document.getElementById('statusText');
-                    statusIndicator.classList.remove('active');
-                    statusText.textContent = 'En pause';
-                    isAudioActive = false;
-                });
-
-                audioElement.addEventListener('ended', () => {
-                    const statusIndicator = document.getElementById('statusIndicator');
-                    const statusText = document.getElementById('statusText');
-                    statusIndicator.classList.remove('active');
-                    statusText.textContent = 'Séance terminée';
-                    isAudioActive = false;
-                });
-            }
-            
-            // Masquer toutes les sections au démarrage
-            const sections = document.querySelectorAll('.content-section');
-            sections.forEach(section => {
-                section.classList.remove('active');
-            });
-        });
-    </script>
-</body>
-</html>
+            '
